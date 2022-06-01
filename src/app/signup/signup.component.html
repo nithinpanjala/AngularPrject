@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-img.png" class="food-munch-logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" id="navItem1" href="#wcuSection">
+                    Why Choose Us?
+                    <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link" href="#exploreMenuSection" id="navItem2">Explore Menu</a>
+                <a class="nav-link" href="#deliveryPaymentSection" id="navItem3">Delivery & Payment</a>
+                <a class="nav-link" href="#followUsSection" id="navItem4">Follow Us</a>
+                <a class="nav-link" routerLink="/login" id="navItem5">Login</a>
+                <a class="nav-link" routerLink="/signup" id="navItem6">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container mt-5 ">
+    <div class="row d-flex flex-row justify-content-center">
+        <div class="col-12 mt-5 text-center">
+            <h1 class="menu-section-heading">Sign Up</h1>
+        </div>
+        <div class="m-2 col-8">
+            <div class="shadow  menu-item-card p-5 m-5">
+                <div class="form d- flex flex- column justify-content-center">
+                    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+                        
+                        
+                        <p class="d-flex flex-column justify-content-center">
+                            <label for="userName">User Name</label>
+                            <input type="text" id="customerName" name="customerName" formControlName="customerName">
+                        </p>
+            
+                        <p class="d-flex flex-column justify-content-center ">
+                            <label for="userPassword">User Password</label>
+                            <input type="password" id="customerPassword" name="customerPassword" formControlName="customerPassword">
+                        </p>
+
+                        <p class="d-flex flex-column justify-content-center ">
+                            <label for="customerFirstName" class="mr-5">User First Name </label>
+                            <input type="text" id="customerFirstName" name="customerFirstName" formControlName="customerFirstName">
+                        </p>
+            
+                        <p class="d-flex flex-column justify-content-center">
+                            <label for="customerLastName">User Last Name </label>
+                            <input type="text" id="customerLastName" name="customerLastName" formControlName="customerLastName">
+                        </p>
+
+                        <p class="d-flex flex-column justify-content-center">
+                            <label for="customerMobile">User Mobile </label>
+                            <input type="text" id="customerMobile" name="customerMobile" formControlName="customerMobile">
+                        </p>
+
+                        <p class="d-flex flex-column justify-content-center">
+                            <label for="customerEmail">User Email </label>
+                            <input type="text" id="customerEmail" name="customerEmail" formControlName="customerEmail">
+                        </p>
+
+                        <p>
+                            <button class="custom-button " type="submit">Submit</button>
+                        </p>
+            
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-section pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-logo-light.png"
+                    class="food-munch-logo" />
+                <h1 class="footer-section-mail-id">orderfood@foodmunch.com</h1>
+                <p class="footer-section-address">
+                    123 Ayur Vigyan Nagar, New Delhi, India.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

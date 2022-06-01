@@ -13,6 +13,7 @@ export class RestaurantsPageComponent implements OnInit {
 
   showResults = false;
   array2: Restaurant[] = [];
+  array25: Restaurant[] = [];
   foodMenuArray: FoodMenu[] = [];
   constructor(
 

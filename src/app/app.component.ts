@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'Food Munch';
   customerId !: number;
   customerName !: string;
+  selectedRestro !: number;
 }

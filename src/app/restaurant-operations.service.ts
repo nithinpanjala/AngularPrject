@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FoodMenu } from './food-menu';
@@ -12,14 +12,17 @@ export class RestaurantOperationsService {
   
   constructor(private httpClient: HttpClient) { } 
   private baseURL = "http://localhost:7070/RestaurantOperations/";
+  private foodListURl = "http://localhost:7070/FoodMenuOperations/";
 
 
   listAllRestaurants(): Observable<Restaurant[]>{
     return this.httpClient.get<Restaurant[]>(`${this.baseURL}`+'getAllRestaurant/');
   }
 
-  selectedRestro(restaurantId : number){
-    return this.httpClient.get<FoodMenu>(`${this.baseURL}`+'getAllDishes/'+`${restaurantId}`);
+  selectedRestro(restaurantId : number): Observable<FoodMenu[]>{
+
+    const params = new HttpParams().set('restaurantId',restaurantId);
+    return this.httpClient.get<FoodMenu[]>(`${this.foodListURl}getAllDishes`,{params});
 
   }
 }

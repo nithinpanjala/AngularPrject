@@ -28,17 +28,16 @@
             <div class="col-12">
                 <h1 class="menu-section-heading" >Customer List</h1>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 " *ngFor="let restaurant of array2;" >
+            <div class="col-12 col-md-6 col-lg-3 " *ngFor="let item of foodMenuArray;" >
                 <div  >
                 <div  class="shadow menu-item-card p-3 mb-3" >
-                    <h1 class="menu-card-title">restaurantName:</h1>
-                    <h1 class="menu-card-title" >{{restaurant.restaurantName}}</h1> 
-                    <h1 class="menu-card-title">restaurantId: </h1>
-                    <h1 class="menu-card-title" > {{restaurant.restaurantId}}</h1>
-                    <button class="custom-button"   (click)="getFoodMenu(restaurant.restaurantId)" >Open Restro</button>
-                    <p class="wcu-card-description">
-                        {{restaurant.getaddress}}
-                    </p> 
+                    <h1 class="menu-card-title">foodName:</h1>
+                    <h1 class="menu-card-title" >{{item.foodName}}</h1> 
+                    <h1 class="menu-card-title">foodName: </h1>
+                    <h1 class="menu-card-title" > {{item.foodName}}</h1>
+                    <h1 class="menu-card-title">foodQuantityAvailable: </h1>
+                    <h1 class="menu-card-title" > {{item.foodQuantityAvailable}}</h1>
+                    <button class="custom-button"   (click)="addtoCart(item.foodId)" >Add to cart</button>
                 </div>
             </div>
             </div>

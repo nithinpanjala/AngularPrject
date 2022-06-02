@@ -11,6 +11,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule} from '@angular/common/http';
 import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.component';
+import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.co
     LoginPageComponent,
     SignupComponent,
     RestaurantsPageComponent,
+    FoodMenuPageComponent,
 
    
   ],

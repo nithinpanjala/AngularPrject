@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { FoodMenu } from '../food-menu';
+import { Restaurant } from '../restaurant';
 import { RestaurantOperationsService } from '../restaurant-operations.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { RestaurantOperationsService } from '../restaurant-operations.service';
 })
 export class FoodMenuPageComponent implements OnInit {
   showResults = false;
+   @Input() restaurant!: Restaurant;
   foodMenuArray: FoodMenu[] = [];
   constructor(
 
@@ -18,8 +20,8 @@ export class FoodMenuPageComponent implements OnInit {
     private restaurantOperationsService: RestaurantOperationsService
   ) { }
 
-  ngOnInit(id : number): void {
-    this.OpenRestro(id);
+  ngOnInit(): void {
+    this.OpenRestro(restaurant.restaurantId);
   }
   addtoCart(id : number){
 

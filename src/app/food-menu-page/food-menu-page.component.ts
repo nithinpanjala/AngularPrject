@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FoodMenu } from '../food-menu';
 import { RestaurantOperationsService } from '../restaurant-operations.service';
-
+import { Restaurant  } from '../restaurant';
 @Component({
   selector: 'app-food-menu-page',
   templateUrl: './food-menu-page.component.html',
@@ -10,16 +11,25 @@ import { RestaurantOperationsService } from '../restaurant-operations.service';
 })
 export class FoodMenuPageComponent implements OnInit {
   showResults = false;
-  foodMenuArray: FoodMenu[] = [];
-  constructor(
+  restaurant1: Restaurant | undefined;
+  @Input() restaurant!: Restaurant;
 
+  foodMenuArray: FoodMenu[] = [];
+
+
+  constructor(
+    private route: ActivatedRoute,
     private router: Router,
     
     private restaurantOperationsService: RestaurantOperationsService
   ) { }
 
-  ngOnInit(id : number): void {
-    this.OpenRestro(id);
+  ngOnInit(): void {
+
+      // First get the product id from the current route.
+      const routeParams = this.route.snapshot.paramMap;
+      const restaurantIdFromRoute = Number(routeParams.get('restaurantId'));
+    this.OpenRestro(restaurantIdFromRoute);
   }
   addtoCart(id : number){
 

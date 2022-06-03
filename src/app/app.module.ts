@@ -12,6 +12,9 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule} from '@angular/common/http';
 import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.component';
 import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component
     SignupComponent,
     RestaurantsPageComponent,
     FoodMenuPageComponent,
+    HeaderComponent,
+    FooterComponent,
+    UserSettingsComponent,
 
    
   ],

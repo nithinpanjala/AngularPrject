@@ -36,6 +36,6 @@ export class RestaurantsPageComponent implements OnInit {
   }
 
 getFoodMenu(id: number){
-  
+  this.router.navigateByUrl('FoodMenuPage');
 }
 }

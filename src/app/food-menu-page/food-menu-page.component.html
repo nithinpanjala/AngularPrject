@@ -1,32 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-img.png" class="food-munch-logo" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-link active" id="navItem1" href="#wcuSection">
-                    Why Choose Us?
-                    <span class="sr-only">(current)</span>
-                </a>
-                <a class="nav-link" href="#exploreMenuSection" id="navItem2">Explore Menu</a>
-                <a class="nav-link" href="#deliveryPaymentSection" id="navItem3">Delivery & Payment</a>
-                <a class="nav-link" href="#followUsSection" id="navItem4">Follow Us</a>
-                <a class="nav-link" routerLink="/login" id="navItem5">Login</a>
-                <a class="nav-link" routerLink="/signup" id="navItem6">Sign Up</a>
-            </div>
-        </div>
-    </div>
-</nav>
 
 <div  class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
     <div class="container" >
         <div class="row" *ngIf="showResults">
             <div class="col-12">
-                <h1 class="menu-section-heading" >Customer List</h1>
+                <h1 class="menu-section-heading" >Food Menu</h1>
             </div>
             <div class="col-12 col-md-6 col-lg-3 " *ngFor="let item of foodMenuArray;" >
                 <div  >
@@ -40,44 +17,6 @@
                     <button class="custom-button"   (click)="addtoCart(item.foodId)" >Add to cart</button>
                 </div>
             </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="follow-us-section pt-5 pb-5" id="followUsSection">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="follow-us-section-heading">Follow Us</h1>
-            </div>
-            <div class="col-12">
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="follow-us-icon-container">
-                        <i class="fab fa-twitter icon"></i>
-                    </div>
-                    <div class="follow-us-icon-container">
-                        <i class="fab fa-instagram icon"></i>
-                    </div>
-                    <div class="follow-us-icon-container">
-                        <i class="fab fa-facebook icon"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="footer-section pt-5 pb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-logo-light.png" class="food-munch-logo" />
-                <h1 class="footer-section-mail-id">orderfood@foodmunch.com</h1>
-                <p class="footer-section-address">
-                    123 Ayur Vigyan Nagar, New Delhi, India.
-                </p>
             </div>
         </div>
     </div>

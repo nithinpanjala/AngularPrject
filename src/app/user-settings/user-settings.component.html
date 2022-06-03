@@ -1,0 +1,235 @@
+<div class="d-flex flex-row justify-content-left ">
+
+
+<div class="  mt-5  d-flex flex-column flex-shrink-0 p-3 text-secondary bg-secondary m-5" style="width: 250px;margin-top: 5px; height:100vh; ">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a class="nav-link custom-outline-button" (click)="AddAddress()" aria-current="page">
+          <svg class="bi me-2" width="20" height="16" ></svg>
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a  class="nav-link custom-outline-button" (click)="ListMyAddresses()" aria-current="page">
+          <svg class="bi me-2" width="20" height="16"></svg>
+          My Addresses
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link custom-outline-button"  (click)="AddAddress()" aria-current="page">
+          <svg class="bi me-2" width="20" height="16"  ></svg>
+          Add Addresses 
+        </a>
+      </li>
+      <li class="nav-item"> 
+        <a  class="nav-link custom-outline-button" (click)="updateUsermobile()" aria-current="page">
+          <svg class="bi me-2" width="20" height="16"></svg>
+          Update Mobile
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link custom-outline-button" (click)="updateUserEmail()" aria-current="page">
+          <svg class="bi me-2" width="20" height="16"></svg>
+          Update Email
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link custom-outline-button" (click)="updateUserPassword()" aria-current="page">
+          <svg class="bi me-2" width="20" height="16"></svg>
+          Update Password
+        </a>
+      </li>
+    </ul>
+    <hr>
+  </div>
+        <div class="container mt-5 d-none" id = "AddAddressContainer">
+        <div class="row d-flex flex-row justify-content-center">
+            <div class="col-12 mt-5 text-center">
+                 <h1 class="menu-section-heading">Add address</h1>
+             </div>
+             <div class=" col-12">
+            <div class="col-12">
+                <div class="shadow menu-item-card p-5 m-3">
+                    <div class="form d-flex flex-column justify-content-center">
+                       
+                            <form  [formGroup]="addAddressForm" (ngSubmit)="onAddAddressSubmit()">
+                               <h4>Add Address Form</h4>
+                                <div class="form-group">
+                                    <label class="form-group" for="houseNumber"><h6>House Number</h6></label>
+                                    <input type="text" class="form-control" id="houseNumber" placeholder="1234 Main St">
+                                  </div>
+                                <div class="form-group">
+                                  <label for="inputAddress1"> <h6>Address Lane 1</h6></label>
+                                  <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St">
+                                </div>
+                                <div class="form-group">
+                                  <label for="inputAddress2"><h6>Address Lane 2</h6></label>
+                                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                </div>
+                                
+                                <div class="form-row d-flex flex-row justify-content-between m-2">
+                                    <div class="form-group col-md-6 mr-1">
+                                        <label for="Landmark"><h6>Landmark</h6></label>
+                                        <input type="text" class="form-control" id="Landmark">
+                                      </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity"><h6>City</h6></label>
+                                    <input type="text" class="form-control" id="inputCity">
+                                  </div>
+                                </div>
+                                <div class="form-row d-flex flex-row justify-content-around ">  
+                                    <div class="form-group col-md-6">
+                                        <label for="inputState"><h6>State</h6></label>
+                                        <input type="text" class="form-control" id="inputState">
+                                      </div>  
+                                  <div class="form-group col-md-6">
+                                    <label for="inputZip"><h6>Zipcode</h6></label>
+                                    <input type="text" class="form-control" id="inputZip">
+                                  </div>
+                                </div>
+                                <div class="form-row d-flex flex-row justify-content-end mt-3">
+                                    <button type="submit" class="btn custom-button">Add Address</button>
+                                </div>
+                            </form>
+                       
+                    </div>     
+                </div>    
+            </div>
+             </div>
+
+         </div>
+        </div>
+        <div class="container mt-5 d-none" id = "ListAddressContainer">
+    <div class="healthy-food-section pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <div class="text-center">
+                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/healthy-food-plate-img.png" class="healthy-food-section-img" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <h1 class="healthy-food-section-heading">
+                        Fresh, Healthy, Organic, Delicious Fruits
+                    </h1>
+                    <p class="healthy-food-section-description">
+                        Say no to harmful chemicals and go fully organic with our range of
+                        fresh fruits and veggies. Pamper your body and your senses with
+                        the true and unadulterated gifts from mother nature. with the true
+                        and unadulterated gifts from mother nature.
+                    </p>
+                    <button class="custom-button">Watch Video</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="container mt-5 d-none" id = "UpdateMobileContainer">
+            <div class="m-2 col-8">
+                <div class="m-2 col-8">
+                    <div class="shadow  menu-item-card p-5 m-5">
+                        <div class="form d- flex flex- column justify-content-center">
+                            <form [formGroup]="updateUsermobileForm" (ngSubmit)="onupdateUsermobileSubmit()">
+                                
+                                <h1>update User mobile Form</h1>
+                                <p class="d-flex flex-column justify-content-center">
+                                    <label for="customerName">User Name</label>
+                                    <input type="text" id="customerName" name="customerName" formControlName="customerName">
+                                </p>                 
+                                <p class="d-flex flex-column justify-content-center ">
+                                    <label for="customerPassword">User Password</label>
+                                    <input type="password" id="customerPassword" name="customerPassword" formControlName="customerPassword">
+                                </p>
+                                <p class="d-flex flex-column justify-content-center ">
+                                    <label for="newMobileNumber">New Mobile Number</label>
+                                    <input type="tel" id="newMobileNumber" name="newMobileNumber" formControlName="newMobileNumber">
+                                </p>
+                    
+                                <div class=" m-3 d-flex flex-row justify-content-center">
+                                    <button class="custom-button " type="submit">Submit</button>
+                                </div> 
+                            </form>
+                        </div>         
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div class="container mt-5 d-none" id = "UpdatePasswordContainer">
+            <div class="m-2 col-8">
+                <div class="m-2 col-8">
+                    <div class="shadow  menu-item-card p-5 m-5">
+                        <div class="form d- flex flex- column justify-content-center">
+                            <form [formGroup]="UpdatePasswordForm" (ngSubmit)="onupdateUserPasswordSubmit()">
+                                
+                                <h4>Update Password Form</h4>
+                                <p class="d-flex flex-column justify-content-center">
+                                    <label for="customerName">User Name</label>
+                                    <input type="text" id="customerName" name="customerName" formControlName="customerName">
+                                </p>
+                    
+                                <p class="d-flex flex-column justify-content-center ">
+                                    <label for="customerPassword">User Password</label>
+                                    <input type="password" id="customerPassword" name="customerPassword" formControlName="customerPassword">
+                                </p>
+                                <p class="d-flex flex-column justify-content-center ">
+                                    <label for="newpassword">New Password</label>
+                                    <input type="password" id="newpassword" name="newpassword" formControlName="newpassword">
+                                </p>
+                    
+                                <div class=" m-3 d-flex flex-row justify-content-center">
+                                    <button class="custom-button " type="submit">Submit</button>
+                                </div> 
+                            </form>
+                        </div>         
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 d-none" id = "UpdateEmailContainer">
+            <div class="m-2 col-8">
+                <div class="m-2 col-8">
+                    <div class="shadow  menu-item-card p-5 m-5">
+                        <div class="form d- flex flex- column justify-content-center">
+                            <form [formGroup]="UpdateEmailForm" (ngSubmit)="onupdateUserEmailSubmit()">
+                                <h4> Update Email Form</h4>
+                                
+                                <p class="d-flex flex-column justify-content-center">
+                                    <label for="customerName">User Name</label>
+                                    <input type="text" id="customerName" name="customerName" formControlName="customerName">
+                                </p>
+                    
+                                <p class="d-flex flex-column justify-content-center ">
+                                    <label for="customerPassword">User Password</label>
+                                    <input type="password" id="customerPassword" name="customerPassword" formControlName="customerPassword">
+                                </p>
+                                <p class="d-flex flex-column justify-content-center ">
+                                    <label for="newEmail">New Mail ID</label>
+                                    <input type="email" id="newEmail" name="newEmail" formControlName="newEmail">
+                                </p>
+                    
+                                <div class=" m-3 d-flex flex-row justify-content-center">
+                                    <button class="custom-button " type="submit">Submit</button>
+                                </div> 
+                            </form>
+                        </div>         
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    
+    
+    
+    </div>
+
+
+
+
+

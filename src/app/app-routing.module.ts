@@ -7,15 +7,19 @@ import { Restaurant } from './restaurant';
 import { RestaurantOperationsService } from './restaurant-operations.service';
 import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.component';
 import { SignupComponent } from './signup/signup.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 const routes: Routes = [
   {path : "", component: HomePageComponent},
   {path : "home", component: HomePageComponent},
   {path : "login", component: LoginPageComponent},
   {path : 'signup', component: SignupComponent},
+  {path : 'UserSettings', component: UserSettingsComponent},
   {path : 'restaurantslist', component: RestaurantsPageComponent},
-  {path : 'FoodMenuPage',component: FoodMenuPageComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path : 'FoodMenuPage/:restaurantId',component: FoodMenuPageComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
+  
+    
 ];
 
 @NgModule({

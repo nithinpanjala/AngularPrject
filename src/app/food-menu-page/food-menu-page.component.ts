@@ -14,7 +14,7 @@ export class FoodMenuPageComponent implements OnInit {
   showResults = false;
   restaurant1: Restaurant | undefined;
   @Input() restaurant!: Restaurant;
-
+  restaurant2: Restaurant | undefined;
   foodMenuArray: FoodMenu[] = [];
 
 

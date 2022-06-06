@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, OnInit, Input } from '@angular/core';
-=======
-import { Component, OnInit ,Input} from '@angular/core';
->>>>>>> f5a7a0680a1871a86e0731dad8953e461b3fda2e
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FoodMenu } from '../food-menu';
@@ -16,14 +12,8 @@ import { RestaurantOperationsService } from '../restaurant-operations.service';
 })
 export class FoodMenuPageComponent implements OnInit {
   showResults = false;
-<<<<<<< HEAD
   restaurant1: Restaurant | undefined;
   @Input() restaurant!: Restaurant;
-=======
-   @Input() restaurant!: Restaurant;
-  foodMenuArray: FoodMenu[] = [];
-  constructor(
->>>>>>> f5a7a0680a1871a86e0731dad8953e461b3fda2e
 
   foodMenuArray: FoodMenu[] = [];
 
@@ -36,15 +26,11 @@ export class FoodMenuPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
 
       // First get the product id from the current route.
       const routeParams = this.route.snapshot.paramMap;
       const restaurantIdFromRoute = Number(routeParams.get('restaurantId'));
     this.OpenRestro(restaurantIdFromRoute);
-=======
-    this.OpenRestro(restaurant.restaurantId);
->>>>>>> f5a7a0680a1871a86e0731dad8953e461b3fda2e
   }
   addtoCart(id : number){
 

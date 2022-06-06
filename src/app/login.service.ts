@@ -54,4 +54,8 @@ addAddress(CustomerAddress : CustomerAddress){
   return this.httpClient.post<Customer>(`${this.baseCustAddURL}`+'updateUserEmail/'+`${CustomerAddress}/`,Customer);
   }
 
+getAllAddresses(customerName: String, customerPassword : String){
+  return this.httpClient.get<Customer>(`${this.baseURL}`+'readUserByUserNameAndPassword/'+`${customerName}/`+`${customerPassword}`);
+}
+
 }

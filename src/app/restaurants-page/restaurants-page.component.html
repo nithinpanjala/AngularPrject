@@ -8,21 +8,22 @@
             <div class="col-12 col-md-6 col-lg-3 " *ngFor="let restaurant of array2;" >
                 <div  >
                 <div  class="shadow menu-item-card p-3 mb-3" >
-                    <h1 class="menu-card-title">restaurantName:</h1>
-                    <h1 class="menu-card-title" >{{restaurant.restaurantName}}</h1> 
-                    <h1 class="menu-card-title">restaurantId: </h1>
-                    <h1 class="menu-card-title" > {{restaurant.restaurantId}}</h1>
-                    <button class="custom-button"  [routerLink]="['/FoodMenuPage', restaurant.restaurantId]" >Open Restro</button>
+                    <h4 class="menu-card-title">Restaurant Name:     {{restaurant.restaurantName}}</h4>
+                    <h4 class="menu-card-title">restaurantId:     {{restaurant.restaurantId}}</h4>
+                    <h4 class="menu-card-title" >Address: </h4>
                     <p class="wcu-card-description">
-                        {{restaurant.getaddress}}
+                        {{restaurant.restaurantAddress.restaurantAddressId}} 
+                        {{restaurant.restaurantAddress.restaurantBuildingNumber}} 
+                        {{restaurant.restaurantAddress.restaurantAddressLane1}}
+                        {{restaurant.restaurantAddress.restaurantAddressLane2}}
+                        {{restaurant.restaurantAddress.restaurantLandmark}}
+                        {{restaurant.restaurantAddress.restaurantDistrict}}
+                        {{restaurant.restaurantAddress.restaurantState}}
+                        {{restaurant.restaurantAddress.restaurantPincode}}
                     </p> 
-<<<<<<< HEAD
+                    <button class="custom-button"  [routerLink]="['/FoodMenuPage', restaurant.restaurantId]" >Open Restro</button>
+                    
                 
-=======
-                        <app-food-menu-page
-                              [restaurant]="restaurant">
-                        </app-food-menu-page>
->>>>>>> f5a7a0680a1871a86e0731dad8953e461b3fda2e
                 </div>
             </div>
             </div>

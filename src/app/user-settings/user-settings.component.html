@@ -105,29 +105,33 @@
          </div>
         </div>
         <div class="container mt-5 d-none" id = "ListAddressContainer">
-    <div class="healthy-food-section pt-5 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-5">
-                    <div class="text-center">
-                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/healthy-food-plate-img.png" class="healthy-food-section-img" />
+            <div  class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
+                <div class="container" >
+                    <div class="row" *ngIf="showResults">
+                        <div class="col-12">
+                            <h1 class="menu-section-heading" >Customer List</h1>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 " *ngFor="let address of customerAddressArray;" >
+                            <div  >
+                            <div  class="shadow menu-item-card p-3 mb-3" >
+                                <!-- <h1 class="menu-card-title">House No : {{address.houseNo}}</h1> -->
+                                <h1 class="menu-card-title">Address Lane 1 :</h1>
+                                <h1 class="menu-card-title">Address Lane 2 : </h1>
+                                <h1 class="menu-card-title">Landmark</h1>
+                                <h1 class="menu-card-title">District :</h1>
+                                <h1 class="menu-card-title">State :</h1>
+                                <h1 class="menu-card-title">Pincode :</h1>
+                                <!-- <button class="custom-button"  [routerLink]="['/FoodMenuPage', address.restaurantId]" >Open Restro</button> -->
+                                <p class="wcu-card-description">
+                                    <!-- {{address.getaddress}} -->
+                                </p> 
+                            
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-7">
-                    <h1 class="healthy-food-section-heading">
-                        Fresh, Healthy, Organic, Delicious Fruits
-                    </h1>
-                    <p class="healthy-food-section-description">
-                        Say no to harmful chemicals and go fully organic with our range of
-                        fresh fruits and veggies. Pamper your body and your senses with
-                        the true and unadulterated gifts from mother nature. with the true
-                        and unadulterated gifts from mother nature.
-                    </p>
-                    <button class="custom-button">Watch Video</button>
-                </div>
             </div>
-        </div>
-    </div>
         </div>
         <div class="container mt-5 d-none" id = "UpdateMobileContainer">
             <div class="m-2 col-8">

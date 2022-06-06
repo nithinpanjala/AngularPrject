@@ -15,6 +15,7 @@ import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant-admin-page.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     HeaderComponent,
     FooterComponent,
     UserSettingsComponent,
+    RestaurantAdminPageComponent,
 
    
   ],

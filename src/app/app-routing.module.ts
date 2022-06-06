@@ -4,6 +4,7 @@ import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { Restaurant } from './restaurant';
+import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant-admin-page.component';
 import { RestaurantOperationsService } from './restaurant-operations.service';
 import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.component';
 import { SignupComponent } from './signup/signup.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path : "login", component: LoginPageComponent},
   {path : 'signup', component: SignupComponent},
   {path : 'UserSettings', component: UserSettingsComponent},
+  {path : 'restAdminLogin', component: RestaurantAdminPageComponent},
   {path : 'restaurantslist', component: RestaurantsPageComponent},
   {path : 'FoodMenuPage/:restaurantId',component: FoodMenuPageComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'},

@@ -29,8 +29,9 @@ export class UserSettingsComponent implements OnInit {
 
   CustAddress: CustomerAddress = new CustomerAddress;
 
-  
+  customerAddressArray: CustomerAddress[] = [];
   submitted = false;
+  showResults = false;
   constructor(
 
     private fb: FormBuilder, 
@@ -40,35 +41,14 @@ export class UserSettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateUsermobileForm = this.fb.group({
-    customerName: ['', [Validators.required]],
-    customerPassword: ['',[Validators.required]],
-    newMobileNumber: ['',[Validators.required]],
-  });
 
-  get updateUsermobileFormControls(){
-    return this.updateUsermobileForm.controls
-  }
 
-  UpdatePasswordForm = this.fb.group({
-    customerName: ['', [Validators.required]],
-    customerPassword: ['',[Validators.required]],
-    newpassword: ['',[Validators.required]],
-  });
 
-  get UpdatePasswordFormControls(){
-    return this.UpdatePasswordForm.controls
-  }
 
-  UpdateEmailForm = this.fb.group({
-    customerName: ['', [Validators.required]],
-    customerPassword: ['',[Validators.required]],
-    newEmail: ['',[Validators.required]],
-  });
-  get UpdateEmailFormControls(){
-    return this.UpdateEmailForm.controls
-  }
 
+
+
+    // ***************************ADD USER ADDRESS CODE ***********************
   
   addAddressForm = this.fb.group({
     houseNumber: ['', [Validators.required]],
@@ -89,6 +69,7 @@ onAddAddressSubmit(){
   this.CustAddress.custPincode = this.UpdateEmailFormControls['inputZip'].value;
   this.addCustomerAddress();
 }
+
 addCustomerAddress(){
   this.loginService.addAddress( this.CustAddress)
   .subscribe(abc => {
@@ -96,10 +77,6 @@ addCustomerAddress(){
   },
    error => console.log(error));
 }
-get addAddressFormControls(){
-  return this.addAddressForm.controls
-}
-
   AddAddress(){
     document.getElementById("AddAddressContainer")?.classList.remove("d-none");
     document.getElementById("ListAddressContainer")?.classList.add("d-none");
@@ -107,20 +84,48 @@ get addAddressFormControls(){
     document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
     document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
   }
+  get addAddressFormControls(){
+    return this.addAddressForm.controls
+  }
+
+
+
+  // *************************** List My Addresses ***********************
+
+
+
   ListMyAddresses(){
     document.getElementById("AddAddressContainer")?.classList.add("d-none");
     document.getElementById("ListAddressContainer")?.classList.remove("d-none");
     document.getElementById("UpdateMobileContainer")?.classList.add("d-none");
     document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
     document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
+    this.showResults = true;
+    // this.onGetAllAddressesOfCustomer();
   }
 
-  updateUsermobile(){
-    document.getElementById("AddAddressContainer")?.classList.add("d-none");
-    document.getElementById("ListAddressContainer")?.classList.add("d-none");
-    document.getElementById("UpdateMobileContainer")?.classList.remove("d-none");
-    document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
-    document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
+//   onGetAllAddressesOfCustomer(){
+//     this.loginService.listAllRestaurants().subscribe(abc => {
+//         this.array2 = abc;
+//         console.log(this.array2);
+//         this.showResults = true;
+//       },
+//        error => console.log(error));
+// }
+
+
+
+  // ***************************Update USER PASSWORD CODE ***********************
+
+
+  UpdatePasswordForm = this.fb.group({
+    customerName: ['', [Validators.required]],
+    customerPassword: ['',[Validators.required]],
+    newpassword: ['',[Validators.required]],
+  });
+
+  get UpdatePasswordFormControls(){
+    return this.UpdatePasswordForm.controls
   }
   updateUserPassword(){
     document.getElementById("AddAddressContainer")?.classList.add("d-none");
@@ -129,39 +134,11 @@ get addAddressFormControls(){
     document.getElementById("UpdatePasswordContainer")?.classList.remove("d-none");
     document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
   }
-  updateUserEmail(){
-    document.getElementById("AddAddressContainer")?.classList.add("d-block");
-    document.getElementById("ListAddressContainer")?.classList.add("d-none");
-    document.getElementById("UpdateMobileContainer")?.classList.add("d-none");
-    document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
-    document.getElementById("UpdateEmailContainer")?.classList.remove("d-none");
-  }
-  onupdateUsermobileSubmit(){
-    this.customerName = this.updateUsermobileFormControls['customerName'].value;
-    this.customerPassword = this.updateUsermobileFormControls['customerPassword'].value;
-    this.newMobileNumber = this.updateUsermobileFormControls['newMobileNumber'].value;
-    this.loginCustomer();
-  }
   onupdateUserPasswordSubmit(){
     this.customerName = this.UpdatePasswordFormControls['customerName'].value;
     this.customerPassword = this.UpdatePasswordFormControls['customerPassword'].value;
     this.newpassword = this.UpdatePasswordFormControls['newpassword'].value;
     this.updateUserNewPassword();
-  }
-
-  onupdateUserEmailSubmit(){
-    this.customerName = this.UpdateEmailFormControls['customerName'].value;
-    this.customerPassword = this.UpdateEmailFormControls['customerPassword'].value;
-    this.newEmail = this.UpdateEmailFormControls['newEmail'].value;
-    this.updateUserNewEmail();
-  }
-
-  updateUserNewEmail(){
-    this.loginService.updateUserEmail( this.customerName,this.customerPassword , this.newEmail)
-    .subscribe(abc => {
-      console.log(abc);
-    },
-     error => console.log(error));
   }
 
   updateUserNewPassword(){
@@ -172,7 +149,78 @@ get addAddressFormControls(){
      error => console.log(error));
 }
 
-  loginCustomer(){
+
+
+  // ***************************Update USER EMAIL CODE ***********************
+
+
+
+
+  UpdateEmailForm = this.fb.group({
+    customerName: ['', [Validators.required]],
+    customerPassword: ['',[Validators.required]],
+    newEmail: ['',[Validators.required]],
+  });
+  get UpdateEmailFormControls(){
+    return this.UpdateEmailForm.controls
+  }
+
+  updateUserEmail(){
+    document.getElementById("AddAddressContainer")?.classList.add("d-block");
+    document.getElementById("ListAddressContainer")?.classList.add("d-none");
+    document.getElementById("UpdateMobileContainer")?.classList.add("d-none");
+    document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
+    document.getElementById("UpdateEmailContainer")?.classList.remove("d-none");
+  }
+  onupdateUserEmailSubmit(){
+    this.customerName = this.UpdateEmailFormControls['customerName'].value;
+    this.customerPassword = this.UpdateEmailFormControls['customerPassword'].value;
+    this.newEmail = this.UpdateEmailFormControls['newEmail'].value;
+    this.updateUserNewEmail();
+  }
+
+  
+  updateUserNewEmail(){
+    this.loginService.updateUserEmail( this.customerName,this.customerPassword , this.newEmail)
+    .subscribe(abc => {
+      console.log(abc);
+    },
+     error => console.log(error));
+  }
+
+
+  // ***************************Update USER MOBILE CODE ***********************
+
+
+  updateUsermobileForm = this.fb.group({
+    customerName: ['', [Validators.required]],
+    customerPassword: ['',[Validators.required]],
+    newMobileNumber: ['',[Validators.required]],
+  });
+
+  
+  get updateUsermobileFormControls(){
+    return this.updateUsermobileForm.controls
+  }
+
+
+  
+  updateUsermobile(){
+    document.getElementById("AddAddressContainer")?.classList.add("d-none");
+    document.getElementById("ListAddressContainer")?.classList.add("d-none");
+    document.getElementById("UpdateMobileContainer")?.classList.remove("d-none");
+    document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
+    document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
+  }
+
+  onupdateUsermobileSubmit(){
+    this.customerName = this.updateUsermobileFormControls['customerName'].value;
+    this.customerPassword = this.updateUsermobileFormControls['customerPassword'].value;
+    this.newMobileNumber = this.updateUsermobileFormControls['newMobileNumber'].value;
+    this.updateUsermobileaaa();
+  }
+
+updateUsermobileaaa(){
     this.loginService.updateUsermobile( this.customerName,this.customerPassword , this.newMobileNumber)
       .subscribe(abc => {
         console.log(abc);
@@ -180,8 +228,10 @@ get addAddressFormControls(){
        error => console.log(error));
   }
 
+
+
+
+
  
-  get form(){
-    return this.updateUsermobileForm.controls
-  }
+
 }

@@ -17,7 +17,6 @@ import { FooterComponent } from './footer/footer.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant-admin-page.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,4 +43,6 @@ import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant
   providers: [LoginPageComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

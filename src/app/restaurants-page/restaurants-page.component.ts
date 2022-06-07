@@ -36,6 +36,7 @@ export class RestaurantsPageComponent implements OnInit {
   }
 
 getFoodMenu(id: number){
+  sessionStorage.setItem('restaurantId', id.toString());
   this.router.navigateByUrl('FoodMenuPage');
 }
 }

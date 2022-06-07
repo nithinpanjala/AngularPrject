@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Customer } from '../customer';
@@ -31,6 +31,7 @@ export class LoginPageComponent implements OnInit {
     
     ) { }
     onSubmit(){
+
     this.customerName = this.form["customerName"].value;
         this.customerPassword = this.form['customerPassword'].value;
     this.submitted = true;
@@ -65,7 +66,10 @@ export class LoginPageComponent implements OnInit {
     this.loginService.getCustomer( this.customerName,this.customerPassword)
       .subscribe(abc => {
         console.log(abc);
-
+        const a = abc.customerName.toString();
+        const b = abc.customerId.toString();
+        sessionStorage.setItem('customerName', a);
+        sessionStorage.setItem('customerId', b);
         this.router.navigateByUrl('home');
 
       },

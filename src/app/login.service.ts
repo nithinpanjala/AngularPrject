@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 import { Customer } from './customer';
 import { CustomerAddress } from './customer-address';
 
@@ -9,7 +10,10 @@ import { CustomerAddress } from './customer-address';
 })
 export class LoginService {
   
-  constructor(private httpClient: HttpClient) { } 
+  constructor(private httpClient: HttpClient,
+    private auth:AuthenticationService
+    
+    ) { } 
   private baseURL = "http://localhost:7070/customers/";
   private baseCustAddURL = "http://localhost:7070/addresses/";
 
@@ -17,6 +21,7 @@ export class LoginService {
 
   getCustomer(customerName: String, customerPassword : String): Observable<Customer>{
     return this.httpClient.get<Customer>(`${this.baseURL}`+'readUserByUserNameAndPassword/'+`${customerName}/`+`${customerPassword}`);
+  
   }
   getAllCustomer(): Observable<Customer[]>{
     return this.httpClient.get<Customer[]>(`${this.baseURL}`+'getAllCustomers/');

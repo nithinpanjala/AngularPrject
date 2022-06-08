@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestaurantAdmin } from '../restaurant-admin';
 import { RestaurantAdminService } from '../restaurant-admin.service';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-restaurant-admin-page',
   templateUrl: './restaurant-admin-page.component.html',
@@ -16,13 +16,26 @@ export class RestaurantAdminPageComponent implements OnInit {
   
   array1: RestaurantAdmin[] = [];
   constructor(
-
+private cookies : CookieService,
     private router: Router,
     private fb: FormBuilder, 
     private restaurantAdminService: RestaurantAdminService,
   ) { }
 
   ngOnInit(): void {
+    const jwtToken =this.cookies.get('jwt_token')
+    
+    if(!jwtToken){
+      
+      this.router.navigate(['login'])
+    }
+    else{
+      this.router.navigate(['land'])
+      console.log(jwtToken)
+     
+    }
+    
+
   }
 
   restaurantAdminloginForm = this.fb.group({
@@ -31,7 +44,7 @@ export class RestaurantAdminPageComponent implements OnInit {
   });
 
   onSignUp(){
-    this.router.navigateByUrl('signup');
+    this.router.navigateByUrl('restsignUp');
   }
 
   onLogin(){
@@ -54,7 +67,7 @@ export class RestaurantAdminPageComponent implements OnInit {
       .subscribe(abc => {
         console.log(abc);
 
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('restHome');
 
       },
        error => console.log(error));

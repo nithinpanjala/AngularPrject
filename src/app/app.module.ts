@@ -16,6 +16,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant-admin-page.component';
+import { CookieService } from 'ngx-cookie-service';
+import { RestaurantHomeComponent } from './restaurant-home/restaurant-home.component';
+import { RestAdminsignUpComponent } from './rest-adminsign-up/rest-adminsign-up.component';
+import { RestOperationsComponent } from './rest-operations/rest-operations.component';
+import { MenuOperationsComponent } from './menu-operations/menu-operations.component';
+//import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,6 +37,10 @@ import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant
     FooterComponent,
     UserSettingsComponent,
     RestaurantAdminPageComponent,
+    RestaurantHomeComponent,
+    RestAdminsignUpComponent,
+    RestOperationsComponent,
+    MenuOperationsComponent,
 
    
   ],
@@ -40,7 +50,7 @@ import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginPageComponent],
+  providers: [LoginPageComponent,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

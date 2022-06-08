@@ -6,4 +6,5 @@ export class RestaurantAdmin {
     adminLastName!: String;
     adminMobile !: String;
     adminEmail!: String;
+    restaurantId!: number;
 };

@@ -18,10 +18,10 @@ export class FoodMenuPageComponent implements OnInit {
   restaurant1: Restaurant | undefined;
   @Input() restaurant!: Restaurant;
   restaurant2: Restaurant | undefined;
-  ordertable: Ordertable = new Ordertable;
+
   cart: Cart = new Cart;
   foodMenuArray: FoodMenu[] = [];
-  ordertableArray: Ordertable[] = [];
+  ordertableArray: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -40,11 +40,20 @@ export class FoodMenuPageComponent implements OnInit {
     this.OpenRestro(restaurantIdFromRoute);
   }
   addtoCart(id : String, foodId: number){
-    this.ordertable.OrderCustId = Number(sessionStorage.getItem("customerId"));
-    this.ordertable.orderRestId = Number(sessionStorage.getItem("restaurantId"));
-    this.ordertable.orderFoodId = foodId;
-    this.ordertable.quantity = Number(id);
-    this.ordertableArray.push(this.ordertable);
+ 
+  const oneItem = {
+    "OrderCustId" : Number(sessionStorage.getItem("customerId")),
+  "orderRestId":Number(sessionStorage.getItem("restaurantId")), 
+  "orderFoodId" : foodId,
+  "quantity" :Number(id),
+};
+
+    this.ordertableArray.push(oneItem);
+  }
+  iterateTable(){
+    this.ordertableArray.forEach(element => {
+  console.log(element.OrderCustId + " "+ element.orderFoodId+" "+element.orderRestId+" "+element.quantity);
+});
   }
   OpenRestro(id : number){
   this.restaurantOperationsService.selectedRestro(id)

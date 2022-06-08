@@ -3,8 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MenuOperationsComponent } from './menu-operations/menu-operations.component';
+import { RestAdminsignUpComponent } from './rest-adminsign-up/rest-adminsign-up.component';
+import { RestOperationsComponent } from './rest-operations/rest-operations.component';
 import { Restaurant } from './restaurant';
 import { RestaurantAdminPageComponent } from './restaurant-admin-page/restaurant-admin-page.component';
+import { RestaurantHomeComponent } from './restaurant-home/restaurant-home.component';
 import { RestaurantOperationsService } from './restaurant-operations.service';
 import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.component';
 import { SignupComponent } from './signup/signup.component';
@@ -17,7 +21,13 @@ const routes: Routes = [
   {path : 'signup', component: SignupComponent},
   {path : 'UserSettings', component: UserSettingsComponent},
   {path : 'restAdminLogin', component: RestaurantAdminPageComponent},
+  {path : 'restHome', component: RestaurantHomeComponent},
+  {path : 'restsignUp', component: RestAdminsignUpComponent},
   {path : 'restaurantslist', component: RestaurantsPageComponent},
+  {path : 'restOperations', component: RestOperationsComponent},
+  {path : 'menuOperations', component: MenuOperationsComponent},
+
+  
   {path : 'FoodMenuPage/:restaurantId',component: FoodMenuPageComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'},
   

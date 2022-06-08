@@ -24,6 +24,18 @@ export class RestaurantOperationsService {
     const params = new HttpParams().set('restaurantId',restaurantId);
     return this.httpClient.get<FoodMenu[]>(`${this.foodListURl}getAllDishes`,{params});
 
+
   }
+
+  createRestro(restaurant : Restaurant): Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}createRestaurant`, restaurant);
+
+  }
+  updateRestaurant(restaurant : Restaurant): Observable<Object>{
+  
+    return this.httpClient.put<Restaurant>(`${this.baseURL}`+'updateRestaurant/',restaurant);
+  }
+
+
 }
 

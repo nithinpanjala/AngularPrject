@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from '../app.component';
 import { FoodMenu } from '../food-menu';
 import { Restaurant } from '../restaurant';
@@ -19,11 +20,27 @@ export class RestaurantsPageComponent implements OnInit {
 
     private router: Router,
     
-    private restaurantOperationsService: RestaurantOperationsService
+    private restaurantOperationsService: RestaurantOperationsService,
+    private cookies:CookieService
   ) { }
 
   ngOnInit(): void {
-    this.onGetAllRestaurants();
+   
+
+    const jwtToken =this.cookies.get('jwt_token')
+    
+    if(!jwtToken){
+      
+      this.router.navigate(['login'])
+    }
+    else{
+      
+      console.log(jwtToken)
+      this.onGetAllRestaurants();
+     
+    }
+   
+
     
   }
   onGetAllRestaurants(){

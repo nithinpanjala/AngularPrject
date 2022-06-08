@@ -16,14 +16,10 @@ export class RestaurantAdminService {
   getAdmin(adminName: String, adminPassword : String): Observable<RestaurantAdmin>{
     return this.httpClient.get<RestaurantAdmin>(`${this.baseURL}`+'readUserByUserNameAndPassword/'+`${adminName}/`+`${adminPassword}`);
   }
-  getAllCustomer(): Observable<RestaurantAdmin[]>{
-    return this.httpClient.get<RestaurantAdmin[]>(`${this.baseURL}`+'getAllCustomers/');
+
+  restAdminSignUpfunction(restAdmin : RestaurantAdmin): Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}createUser`, restAdmin);
   }
-
-
-
-
-
 
   updateUsermobile(adminName: String, adminPassword : String,newMobileNumber : String): Observable<RestaurantAdmin>{
   

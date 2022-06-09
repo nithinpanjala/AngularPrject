@@ -15,45 +15,28 @@ export class RestaurantsPageComponent implements OnInit {
 
   showResults = false;
   array2: Restaurant[] = [];
-  foodMenuArray: FoodMenu[] = [];
+  
   constructor(
-
     private router: Router,
-    
     private restaurantOperationsService: RestaurantOperationsService,
-    private cookies:CookieService
+    private cookies: CookieService
   ) { }
 
   ngOnInit(): void {
-   
 
-    const jwtToken =this.cookies.get('jwt_token')
-    
-    if(!jwtToken){
-      
-      this.router.navigate(['login'])
-    }
-    else{
-      
-      console.log(jwtToken)
-      this.onGetAllRestaurants();
-     
-    }
-   
 
-    
+
+    this.onGetAllRestaurants();
+
   }
-  onGetAllRestaurants(){
-      this.restaurantOperationsService.listAllRestaurants().subscribe(abc => {
-          this.array2 = abc;
-          console.log(this.array2);
-          this.showResults = true;
-        },
-         error => console.log(error));
+  onGetAllRestaurants() {
+    this.restaurantOperationsService.listAllRestaurants().subscribe(abc => {
+      this.array2 = abc;
+      console.log(this.array2);
+      this.showResults = true;
+    },
+      error => console.log(error));
   }
 
-getFoodMenu(id: number){
-  sessionStorage.setItem('restaurantId', id.toString());
-  this.router.navigateByUrl('FoodMenuPage');
-}
+
 }

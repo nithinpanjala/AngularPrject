@@ -12,12 +12,14 @@ export class RestaurantOperationsService {
   
   constructor(private httpClient: HttpClient) { } 
   private baseURL = "http://localhost:7070/RestaurantOperations/";
+
   private foodListURl = "http://localhost:7070/FoodMenuOperations/";
 
 
   listAllRestaurants(): Observable<Restaurant[]>{
     return this.httpClient.get<Restaurant[]>(`${this.baseURL}`+'getAllRestaurant/');
   }
+
 
   selectedRestro(restaurantId : number): Observable<FoodMenu[]>{
 
@@ -26,7 +28,6 @@ export class RestaurantOperationsService {
 
 
   }
-
   createRestro(restaurant : Restaurant): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}createRestaurant`, restaurant);
 

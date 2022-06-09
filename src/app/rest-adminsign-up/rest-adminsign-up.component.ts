@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestaurantAdmin } from '../restaurant-admin';
+import { Restaurant } from '../restaurant';
 import { RestaurantAdminService } from '../restaurant-admin.service';
 
 @Component({
@@ -36,18 +37,18 @@ export class RestAdminsignUpComponent implements OnInit {
     adminLastName: ['',[Validators.required]],
     adminMobile: ['',[Validators.required]],
     adminEmail: ['',[Validators.required]],
-    restaurantId: ['',[Validators.required]]
+    restaurantName: ['',[Validators.required]]
   });
 
   onSubmit(){
     this.restaurantAdmin = new RestaurantAdmin();
+
     this.restaurantAdmin.adminName = this.form['adminName'].value;
     this.restaurantAdmin.adminPassword = this.form['adminPassword'].value;
     this.restaurantAdmin.adminFirstName = this.form['adminFirstName'].value;
     this.restaurantAdmin.adminLastName = this.form['adminLastName'].value;
     this.restaurantAdmin.adminEmail = this.form['adminEmail'].value;
     this.restaurantAdmin.adminMobile = this.form['adminMobile'].value;
-    this.restaurantAdmin.restaurantId = this.form['restaurantId'].value;
     this.submitted = true;
     this.saveAdmin();
   }
@@ -55,10 +56,11 @@ export class RestAdminsignUpComponent implements OnInit {
     this.restAdminServices.restAdminSignUpfunction(this.restaurantAdmin)
       .subscribe(data => {
         console.log(data);
-
+        this.router.navigateByUrl('restAdminLogin');
       },
        error => console.log(error));
-       this.router.navigateByUrl('restHome');
+       this.router.navigateByUrl('restsignUp');
+
   }
   get form(){
     return this.RestAdminSignUpForm.controls

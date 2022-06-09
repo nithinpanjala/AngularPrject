@@ -1,3 +1,5 @@
+import { Restaurant } from "./restaurant";
+
 export class RestaurantAdmin {
     adminId!: number;
     adminName !: String;
@@ -6,5 +8,5 @@ export class RestaurantAdmin {
     adminLastName!: String;
     adminMobile !: String;
     adminEmail!: String;
-    restaurantId!: number;
+    restaurant!: Restaurant;
 };

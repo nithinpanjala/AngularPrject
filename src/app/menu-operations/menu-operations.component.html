@@ -1,199 +1,209 @@
 <div class="d-flex flex-row justify-content-left ">
 
 
-    <div class="  mt-5  d-flex flex-column flex-shrink-0 p-3 text-secondary bg-secondary m-5" style="width: 250px;margin-top: 5px; height:100vh; ">
+    <div class="  mt-5  d-flex flex-column flex-shrink-0 p-3 text-secondary bg-secondary m-5"
+        style="width: 250px;margin-top: 5px; height:100vh; ">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4">Sidebar</span>
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4">Sidebar</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a class="nav-link custom-outline-button" (click)="AddDishes()" aria-current="page">
-              <svg class="bi me-2" width="20" height="16" ></svg>
-              Add Dishes
-            </a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link custom-outline-button" (click)="UpdateDish()" aria-current="page">
-              <svg class="bi me-2" width="20" height="16"></svg>
-              Update Dish
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link custom-outline-button"  (click)="ListAllDishes()" aria-current="page">
-              <svg class="bi me-2" width="20" height="16"  ></svg>
-              List All Dishes
-            </a>
-          </li>
-          <li class="nav-item"> 
-            <a  class="nav-link custom-outline-button" (click)="deleteDish()" aria-current="page">
-              <svg class="bi me-2" width="20" height="16"></svg>
-              Delete Dish
-            </a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link custom-outline-button" (click)="AddDishes()" aria-current="page">
+                    <svg class="bi me-2" width="20" height="16"></svg>
+                    Add Dishes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-outline-button" (click)="UpdateDish()" aria-current="page">
+                    <svg class="bi me-2" width="20" height="16"></svg>
+                    Update Dish
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-outline-button" (click)="ListAllDishes()" aria-current="page">
+                    <svg class="bi me-2" width="20" height="16"></svg>
+                    List All Dishes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link custom-outline-button" (click)="deleteDish()" aria-current="page">
+                    <svg class="bi me-2" width="20" height="16"></svg>
+                    Delete Dish
+                </a>
+            </li>
         </ul>
         <hr>
-      </div>
+    </div>
 
-            <div class="container mt-5 d-none" id = "AddDishesContainer">
-            <div class="row d-flex flex-row justify-content-center">
-                <div class="col-12 mt-5 text-center">
-                     <h1 class="menu-section-heading">Add address</h1>
-                 </div>
-                 <div class=" col-12">
+    <div class="container mt-5 d-none" id="AddDishesContainer">
+        <div class="row d-flex flex-row justify-content-center">
+            <div class="col-12 mt-5 text-center">
+                <h1 class="menu-section-heading">Add address</h1>
+            </div>
+            <div class=" col-12">
                 <div class="col-12">
                     <div class="shadow menu-item-card p-5 m-3">
                         <div class="form d-flex flex-column justify-content-center">
-                           
-                                <form  [formGroup]="AddDishesForm" (ngSubmit)="onAddDishesSubmit()">
-                                   <h4>Add Address Form</h4>
-                                    <div class="form-group">
-                                        <label class="form-group" for="houseNumber"><h6>House Number</h6></label>
-                                        <input type="text" class="form-control" id="houseNumber" placeholder="1234 Main St">
-                                      </div>
-                                    <div class="form-group">
-                                      <label for="inputAddress1"> <h6>Address Lane 1</h6></label>
-                                      <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St">
+
+                            <form [formGroup]="AddDishesForm" (ngSubmit)="onAddDishesSubmit()">
+                                <h4>Add Address Form</h4>
+                                <div class="form-group">
+                                    <label class="form-group" for="houseNumber">
+                                        <h6>House Number</h6>
+                                    </label>
+                                    <input type="text" class="form-control" id="houseNumber" placeholder="1234 Main St">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress1">
+                                        <h6>Address Lane 1</h6>
+                                    </label>
+                                    <input type="text" class="form-control" id="inputAddress1"
+                                        placeholder="1234 Main St">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress2">
+                                        <h6>Address Lane 2</h6>
+                                    </label>
+                                    <input type="text" class="form-control" id="inputAddress2"
+                                        placeholder="Apartment, studio, or floor">
+                                </div>
+
+                                <div class="form-row d-flex flex-row justify-content-between m-2">
+                                    <div class="form-group col-md-6 mr-1">
+                                        <label for="Landmark">
+                                            <h6>Landmark</h6>
+                                        </label>
+                                        <input type="text" class="form-control" id="Landmark">
                                     </div>
-                                    <div class="form-group">
-                                      <label for="inputAddress2"><h6>Address Lane 2</h6></label>
-                                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                                    </div>
-                                    
-                                    <div class="form-row d-flex flex-row justify-content-between m-2">
-                                        <div class="form-group col-md-6 mr-1">
-                                            <label for="Landmark"><h6>Landmark</h6></label>
-                                            <input type="text" class="form-control" id="Landmark">
-                                          </div>
-                                      <div class="form-group col-md-6">
-                                        <label for="inputCity"><h6>City</h6></label>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">
+                                            <h6>City</h6>
+                                        </label>
                                         <input type="text" class="form-control" id="inputCity">
-                                      </div>
                                     </div>
-                                    <div class="form-row d-flex flex-row justify-content-around ">  
-                                        <div class="form-group col-md-6">
-                                            <label for="inputState"><h6>State</h6></label>
-                                            <input type="text" class="form-control" id="inputState">
-                                          </div>  
-                                      <div class="form-group col-md-6">
-                                        <label for="inputZip"><h6>Zipcode</h6></label>
+                                </div>
+                                <div class="form-row d-flex flex-row justify-content-around ">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputState">
+                                            <h6>State</h6>
+                                        </label>
+                                        <input type="text" class="form-control" id="inputState">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputZip">
+                                            <h6>Zipcode</h6>
+                                        </label>
                                         <input type="text" class="form-control" id="inputZip">
-                                      </div>
                                     </div>
-                                    <div class="form-row d-flex flex-row justify-content-end mt-3">
-                                        <button type="submit" class="btn custom-button">Add Address</button>
-                                    </div>
-                                </form>
-                           
-                        </div>     
-                    </div>    
+                                </div>
+                                <div class="form-row d-flex flex-row justify-content-end mt-3">
+                                    <button type="submit" class="btn custom-button">Add Address</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
-                 </div>
-    
-             </div>
             </div>
 
-            <div class="container mt-5 d-none" id = "ListAllDishesContainer">
-                <div class="row d-flex flex-row justify-content-center">
-                    <div class="col-12 mt-5 text-center ">
-                        <div class="col-12 ">
-                            <h6 class="menu-section-heading mb-2" >Enter Unique Restaurant Id</h6>
-                            <input #restId type="teext" id="restaurantId" name="restaurantId" >
-                            <button class="custom-outline-button" (click)="onListAllDishesSubmit(restId.value)">Get Dishes</button>
-                        </div>
-                     </div>
-                     <div class=" col-12">
-                    <div class="col-12">
-                        <div class="row" *ngIf="showResults">
-                            
-                            <div class="col-12 d-none" id ="iterator">
-                                <h1 class="menu-section-heading" >Dishes List</h1>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3 " *ngFor="let item of ListAllDishesArray;">
-                               
-                                    <div class="shadow menu-item-card p-3 mb-3">
-                                        <h6 class="menu-card-title">Item Name: <span class="menu-card-title">{{item.foodName}}</span></h6>
-                                        <h6 class="menu-card-title">Price: {{item.foodPrice}}</h6>
-                                        <h6 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}}</h6>
-                                        <label for="quantity" >Quantity :</label>
-                                    </div> 
-                            </div>
-                        
-                        </div>   
-                    </div>
-                     </div>
-        
-                 </div>
-            </div>
-    
+        </div>
+    </div>
 
-            <div class="container mt-5 d-none" id = "UpdateDishContainer">
-                <div class="m-2 col-8">
-                    <div class="m-2 col-8">
-                        <div class="shadow  menu-item-card p-5 m-5">
-                            <div class="form d- flex flex- column justify-content-center">
-                                <form [formGroup]="UpdateDishForm" (ngSubmit)="onUpdateDishSubmit()">
-                                    
-                                    <h1>update User mobile Form</h1>
-                                    <p class="d-flex flex-column justify-content-center">
-                                        <label for="customerName">User Name</label>
-                                        <input type="text" id="customerName" name="customerName" formControlName="customerName">
-                                    </p>                 
-                                    <p class="d-flex flex-column justify-content-center ">
-                                        <label for="customerPassword">User Password</label>
-                                        <input type="password" id="customerPassword" name="customerPassword" formControlName="customerPassword">
-                                    </p>
-                                    <p class="d-flex flex-column justify-content-center ">
-                                        <label for="newMobileNumber">New Mobile Number</label>
-                                        <input type="tel" id="newMobileNumber" name="newMobileNumber" formControlName="newMobileNumber">
-                                    </p>
-                        
-                                    <div class=" m-3 d-flex flex-row justify-content-center">
-                                        <button class="custom-button " type="submit">Submit</button>
-                                    </div> 
-                                </form>
-                            </div>         
+    <div class="container mt-5 d-none" id="ListAllDishesContainer">
+        <div class="row d-flex flex-row justify-content-center">
+            <div class=" col-12">
+
+                <div class="row" *ngIf="showResults">
+
+                    <div class="col-12 d-none" id="iterator">
+                        <h1 class="menu-section-heading">Dishes List</h1>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 " *ngFor="let item of ListAllDishesArray;">
+
+                        <div class="shadow menu-item-card p-3 mb-3">
+                            <h6 class="menu-card-title">Item Name: <span
+                                    class="menu-card-title">{{item.foodName}}</span></h6>
+                            <h6 class="menu-card-title">Price: {{item.foodPrice}}</h6>
+                            <h6 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}}</h6>
+                            <label for="quantity">Quantity :</label>
                         </div>
                     </div>
+
                 </div>
-            </div>   
-            <div class="container mt-5 d-none" id = "deleteDishContainer">
-                <div class="m-2 col-8">
-                    <div class="m-2 col-8">
-                        <div class="shadow  menu-item-card p-5 m-5">
-                            <div class="form d- flex flex- column justify-content-center">
-                                <form [formGroup]="deleteDishForm" (ngSubmit)="ondeleteDishSubmit()">
-                                    
-                                    <h4>Update Password Form</h4>
-                                    <p class="d-flex flex-column justify-content-center">
-                                        <label for="customerName">User Name</label>
-                                        <input type="text" id="customerName" name="customerName" formControlName="customerName">
-                                    </p>
-                        
-                                    <p class="d-flex flex-column justify-content-center ">
-                                        <label for="customerPassword">User Password</label>
-                                        <input type="password" id="customerPassword" name="customerPassword" formControlName="customerPassword">
-                                    </p>
-                                    <p class="d-flex flex-column justify-content-center ">
-                                        <label for="newpassword">New Password</label>
-                                        <input type="password" id="newpassword" name="newpassword" formControlName="newpassword">
-                                    </p>
-                        
-                                    <div class=" m-3 d-flex flex-row justify-content-center">
-                                        <button class="custom-button " type="submit">Submit</button>
-                                    </div> 
-                                </form>
-                            </div>         
-                        </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container mt-5 d-none" id="UpdateDishContainer">
+        <div class="m-2 col-8">
+            <div class="m-2 col-8">
+                <div class="shadow  menu-item-card p-5 m-5">
+                    <div class="form d- flex flex- column justify-content-center">
+                        <form [formGroup]="UpdateDishForm" (ngSubmit)="onUpdateDishSubmit()">
+
+                            <h1>update User mobile Form</h1>
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="customerName">User Name</label>
+                                <input type="text" id="customerName" name="customerName" formControlName="customerName">
+                            </p>
+                            <p class="d-flex flex-column justify-content-center ">
+                                <label for="customerPassword">User Password</label>
+                                <input type="password" id="customerPassword" name="customerPassword"
+                                    formControlName="customerPassword">
+                            </p>
+                            <p class="d-flex flex-column justify-content-center ">
+                                <label for="newMobileNumber">New Mobile Number</label>
+                                <input type="tel" id="newMobileNumber" name="newMobileNumber"
+                                    formControlName="newMobileNumber">
+                            </p>
+
+                            <div class=" m-3 d-flex flex-row justify-content-center">
+                                <button class="custom-button " type="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container mt-5 d-none" id="deleteDishContainer">
+        <div class="m-2 col-8">
+            <div class="m-2 col-8">
+                <div class="shadow  menu-item-card p-5 m-5">
+                    <div class="form d- flex flex- column justify-content-center">
+                        <form [formGroup]="deleteDishForm" (ngSubmit)="ondeleteDishSubmit()">
+
+                            <h4>Update Password Form</h4>
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="customerName">User Name</label>
+                                <input type="text" id="customerName" name="customerName" formControlName="customerName">
+                            </p>
+
+                            <p class="d-flex flex-column justify-content-center ">
+                                <label for="customerPassword">User Password</label>
+                                <input type="password" id="customerPassword" name="customerPassword"
+                                    formControlName="customerPassword">
+                            </p>
+                            <p class="d-flex flex-column justify-content-center ">
+                                <label for="newpassword">New Password</label>
+                                <input type="password" id="newpassword" name="newpassword"
+                                    formControlName="newpassword">
+                            </p>
+
+                            <div class=" m-3 d-flex flex-row justify-content-center">
+                                <button class="custom-button " type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-    
-    
-    
-    
-    
-    
-    

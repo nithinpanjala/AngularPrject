@@ -12,7 +12,6 @@ import { RestaurantOperationsService } from '../restaurant-operations.service';
 })
 export class MenuOperationsComponent implements OnInit {
   showResults!: Boolean;
-  restId: number = 0;
   ListAllDishesArray: FoodMenu[] = [];
 
   constructor(
@@ -93,14 +92,15 @@ export class MenuOperationsComponent implements OnInit {
     document.getElementById("ListAllDishesContainer")?.classList.remove("d-none");
     document.getElementById("UpdateDishContainer")?.classList.add("d-none");
     document.getElementById("deleteDishContainer")?.classList.add("d-none");
+    this.onListAllDishesSubmit();
   }
 
 
-  onListAllDishesSubmit(restidfromHtml: String){
+  onListAllDishesSubmit(){
     this.showResults = true;
-    this.restId= Number(restidfromHtml);
+
     document.getElementById("iterator")?.classList.remove("d-none");
-    this.restaurantOperationsService.selectedRestro(this.restId)
+    this.restaurantOperationsService.selectedRestro(Number(sessionStorage.getItem("adminrestaurantId")))
     .subscribe(abc => {
 
       console.log(abc);

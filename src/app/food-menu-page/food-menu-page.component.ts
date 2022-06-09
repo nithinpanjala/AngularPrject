@@ -37,35 +37,43 @@ export class FoodMenuPageComponent implements OnInit {
       const restaurantIdFromRoute = Number(routeParams.get('restaurantId'));
       sessionStorage.setItem('restaurantId', restaurantIdFromRoute.toString());
 
-    this.OpenRestro(restaurantIdFromRoute);
+    this.OpenRestaurant(restaurantIdFromRoute);
   }
+
+
+
+
   addtoCart(id : String, foodId: number){
  
-  const oneItem = {
-    "OrderCustId" : Number(sessionStorage.getItem("customerId")),
-  "orderRestId":Number(sessionStorage.getItem("restaurantId")), 
-  "orderFoodId" : foodId,
-  "quantity" :Number(id),
-};
+    const oneItem = {
+      "OrderCustId" : Number(sessionStorage.getItem("customerId")),
+      "orderRestId":Number(sessionStorage.getItem("restaurantId")), 
+      "orderFoodId" : foodId,
+      "quantity" :Number(id),
+    };
 
     this.ordertableArray.push(oneItem);
   }
+
+
   iterateTable(){
     this.ordertableArray.forEach(element => {
-  console.log(element.OrderCustId + " "+ element.orderFoodId+" "+element.orderRestId+" "+element.quantity);
+  console.log(element.OrderCustId + " ***"+ element.orderFoodId+" ****"+element.orderRestId+"*** "+element.quantity);
 });
   }
-  OpenRestro(id : number){
-  this.restaurantOperationsService.selectedRestro(id)
+
+
+  OpenRestaurant(restroId : number){
+  this.restaurantOperationsService.selectedRestro(restroId)
       .subscribe(abc => {
         console.log(abc);
         this.foodMenuArray = abc;
-        console.log(this.foodMenuArray);
         this.showResults = true;
       },
        error => console.log(error));
   }
   placeOrder(){
+    this.iterateTable();
     this.cart.orderTable = this.ordertableArray;
   }
 

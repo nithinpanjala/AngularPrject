@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RestaurantAdmin } from '../restaurant-admin';
 import { RestaurantAdminService } from '../restaurant-admin.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from '../authentication.service';
 @Component({
   selector: 'app-restaurant-admin-page',
   templateUrl: './restaurant-admin-page.component.html',
@@ -20,20 +21,11 @@ private cookies : CookieService,
     private router: Router,
     private fb: FormBuilder, 
     private restaurantAdminService: RestaurantAdminService,
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit(): void {
-    const jwtToken =this.cookies.get('jwt_token')
-    
-    if(!jwtToken){
-      
-      this.router.navigate(['login'])
-    }
-    else{
-      this.router.navigate(['land'])
-      console.log(jwtToken)
-     
-    }
+ 
     
 
   }
@@ -66,8 +58,40 @@ private cookies : CookieService,
     this.restaurantAdminService.getAdmin( this.adminName,this.adminPassword)
       .subscribe(abc => {
         console.log(abc);
+        
+        if (abc == null) {
 
-        this.router.navigateByUrl('restHome');
+          //this.snack.open("Bad credentials", "ok", { duration: 2000 })
+          console.log('bad credentials')
+        }
+        else {
+
+          const requestBody = { customerName: this.adminName, customerPassword: this.adminPassword }
+          this.authService.generateToken(requestBody).subscribe((data) => {
+            const parsedData = JSON.parse(data);
+            this.cookies.set('rest_admin_jwt_token', parsedData.JWT, { expires: 30 });
+             
+            console.log(parsedData);
+            
+          })
+
+          console.log('success')
+          
+          //this.snack.open("Success", "ok", { duration: 1000 })
+          const a = abc.adminId.toString();
+          const b = abc.adminName.toString();
+          sessionStorage.setItem('adminId', a);
+          sessionStorage.setItem('adminName', b);
+          const c = abc.restaurant.restaurantId.toString();
+          sessionStorage.setItem('adminId', a);
+          sessionStorage.setItem('adminName', b);
+          sessionStorage.setItem('adminrestaurantId', c);
+          this.router.navigateByUrl('restHome');
+
+        }
+
+
+       
 
       },
        error => console.log(error));

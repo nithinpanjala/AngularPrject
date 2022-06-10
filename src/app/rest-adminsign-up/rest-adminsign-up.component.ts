@@ -13,6 +13,7 @@ import { RestaurantAdminService } from '../restaurant-admin.service';
 export class RestAdminsignUpComponent implements OnInit {
 
   ngOnInit(): void {
+    
   }
  
  

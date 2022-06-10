@@ -21,6 +21,7 @@
     font-family: "Roboto";
 }
 
+
 #navItem4 {
     color: #323f4b;
     font-family: "Roboto";
@@ -63,6 +64,15 @@
     border-radius: 8px;
     margin-right: 10px;
 }
+.custom-button2 {
+    color: white;
+    background-image: linear-gradient(#d0b200, #a58d00);
+    width: 80px;
+    height: 30px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+}
 
 .custom-outline-button {
     color: #d0b200;
@@ -74,6 +84,17 @@
     border-color: #d0b200;
     border-radius: 8px;
 }
+.custom-outline-button2 {
+    color: #d0b200;
+    background-color: transparent;
+    width: 80px;
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d0b200;
+    border-radius: 8px;
+}
+
 
 .wcu-section {
     background-color: #f9fbfe;

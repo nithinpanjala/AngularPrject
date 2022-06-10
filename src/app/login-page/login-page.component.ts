@@ -122,43 +122,4 @@ export class LoginPageComponent implements OnInit {
   }
 
 
-  //    displayResults(customers:Customer[]) {
-
-  //     for (let customer of customers) {
-  //         this.createAndAppendSearchResult(customer);
-  //     }
-  // }
-
-  // createAndAppendSearchResult(result: Customer) {
-
-  //   let resultItemEl = document.createElement("div");
-  //   resultItemEl.classList.add("shadow menu-item-card p-3 mb-3");
-
-  //   let titleEl = document.createElement("h1");
-  //   titleEl.textContent =`${result.customerName}`;
-  //   titleEl.classList.add("menu-card-title");
-  //   resultItemEl.appendChild(titleEl);
-
-  //   let titleBreakEl = document.createElement("br");
-  //   resultItemEl.appendChild(titleBreakEl);
-
-  //   let descriptionEl = document.createElement("p");
-  //   descriptionEl.classList.add("menu-item-link");
-  //   descriptionEl.textContent = `${result.customerFirstName}`;
-  //   resultItemEl.appendChild(descriptionEl);
-
-  //   let descriptionE2 = document.createElement("p");
-  //   descriptionE2.classList.add("menu-item-link");
-  //   descriptionE2.textContent = `${result.customerFirstName}`;
-  //   resultItemEl.appendChild(descriptionE2);
-
-  //   let descriptionE3 = document.createElement("p");
-  //   descriptionE3.classList.add("menu-item-link");
-  //   descriptionE3.textContent = `${result.customerLastName}`;
-  //   resultItemEl.appendChild(descriptionE3);
-
-  // }
-
-
-
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-restaurant-home',
   templateUrl: './restaurant-home.component.html',
@@ -10,10 +10,23 @@ export class RestaurantHomeComponent implements OnInit {
   showResults!: true;
   customerAddressArray!: [];
   constructor(
+    public cookies : CookieService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+
+    const jwtToken =this.cookies.get('rest_admin_jwt_token')
+    
+    if(!jwtToken){
+      
+      this.router.navigate(['login'])
+    }
+    else{
+      console.log(jwtToken)
+
+    }
+
   }
 
   FoodMenuOperations(){

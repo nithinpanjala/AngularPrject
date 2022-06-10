@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Restaurant } from '../restaurant';
 import { RestaurantOperationsService } from '../restaurant-operations.service';
-
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-rest-operations',
   templateUrl: './rest-operations.component.html',
@@ -13,10 +14,23 @@ export class RestOperationsComponent implements OnInit {
   restaurant : Restaurant = new Restaurant;
   constructor(
     private fb: FormBuilder, 
+    public cookies : CookieService,
+    private router: Router,
     private restaurantOperationsService : RestaurantOperationsService,
   ) { }
 
   ngOnInit(): void {
+
+    const jwtToken =this.cookies.get('rest_admin_jwt_token')
+    if(!jwtToken){
+      
+      this.router.navigate(['login'])
+    }
+    else{
+      console.log(jwtToken)
+
+    }
+
   }
 
 

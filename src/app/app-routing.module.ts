@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FoodMenuPageComponent } from './food-menu-page/food-menu-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MainHomeComponent } from './main-home/main-home.component';
 import { MenuOperationsComponent } from './menu-operations/menu-operations.component';
 import { RestAdminsignUpComponent } from './rest-adminsign-up/rest-adminsign-up.component';
 import { RestOperationsComponent } from './rest-operations/rest-operations.component';
@@ -15,7 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 const routes: Routes = [
-  {path : "", component: HomePageComponent},
+  {path : "", component: MainHomeComponent},
   {path : "home", component: HomePageComponent},
   {path : "login", component: LoginPageComponent},
   {path : 'signup', component: SignupComponent},
@@ -26,10 +27,9 @@ const routes: Routes = [
   {path : 'restaurantslist', component: RestaurantsPageComponent},
   {path : 'restOperations', component: RestOperationsComponent},
   {path : 'menuOperations', component: MenuOperationsComponent},
-
-  
+  {path : 'MainHome', component: MainHomeComponent},
   {path : 'FoodMenuPage/:restaurantId',component: FoodMenuPageComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   
     
 ];

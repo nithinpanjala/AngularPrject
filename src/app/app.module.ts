@@ -21,8 +21,10 @@ import { RestaurantHomeComponent } from './restaurant-home/restaurant-home.compo
 import { RestAdminsignUpComponent } from './rest-adminsign-up/rest-adminsign-up.component';
 import { RestOperationsComponent } from './rest-operations/rest-operations.component';
 import { MenuOperationsComponent } from './menu-operations/menu-operations.component';
-//import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainHomeComponent } from './main-home/main-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,14 +43,16 @@ import { MenuOperationsComponent } from './menu-operations/menu-operations.compo
     RestAdminsignUpComponent,
     RestOperationsComponent,
     MenuOperationsComponent,
-
-   
+    MainHomeComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [LoginPageComponent,CookieService],
   bootstrap: [AppComponent]

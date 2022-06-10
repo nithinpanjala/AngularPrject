@@ -6,11 +6,13 @@ import { FoodMenu } from '../food-menu';
 import { Ordertable } from '../ordertable';
 import { Restaurant } from '../restaurant';
 import { RestaurantOperationsService } from '../restaurant-operations.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-food-menu-page',
   templateUrl: './food-menu-page.component.html',
-  styleUrls: ['./food-menu-page.component.css']
+  styleUrls: ['./food-menu-page.component.css'],
+
 })
 export class FoodMenuPageComponent implements OnInit {
   quantity: number = 0;
@@ -27,7 +29,8 @@ export class FoodMenuPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     
-    private restaurantOperationsService: RestaurantOperationsService
+    private restaurantOperationsService: RestaurantOperationsService,
+    private snack : MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +54,8 @@ export class FoodMenuPageComponent implements OnInit {
       "orderFoodId" : foodId,
       "quantity" :Number(id),
     };
+    this.snack.open(oneItem.orderFoodId +"added to cart", "ok", { duration: 2000,verticalPosition: 'top',
+    horizontalPosition: 'center',});
 
     this.ordertableArray.push(oneItem);
   }

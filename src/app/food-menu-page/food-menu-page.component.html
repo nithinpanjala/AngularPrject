@@ -1,3 +1,6 @@
+
+
+<app-header></app-header>
 <div class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
     <div class="container">
         <div class="row" *ngIf="showResults">
@@ -21,8 +24,9 @@
                
             </div>
             <div>
-                <button class="custom-outline-button  justify-content-center" (click)="iterateTable()">Place Order</button>
+                <button class="custom-outline-button  justify-content-center" (click)="placeOrder()">Place Order</button>
             </div>
         </div>
     </div>
 </div>
+<app-footer></app-footer>

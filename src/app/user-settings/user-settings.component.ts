@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Customer } from '../customer';
-import { CustomerSignUpServiceService } from '../customer-sign-up-service.service';
+import { Customer } from '../Classes/customer';
+import { CustomerSignUpServiceService } from '../services/customer-sign-up-service.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoginService } from '../login.service';
-import { CustomerAddress } from '../customer-address';
+import { LoginService } from '../services/login.service';
+import { CustomerAddress } from '../Classes/customer-address';
 
 @Component({
   selector: 'app-user-settings',
@@ -60,13 +60,14 @@ export class UserSettingsComponent implements OnInit {
     inputZip: ['',[Validators.required]],
   });
 onAddAddressSubmit(){
-  this.CustAddress.custHouseNumber= this.UpdateEmailFormControls['houseNumber'].value;
-  this.CustAddress.custAddressLane1= this.UpdateEmailFormControls['inputAddress1'].value;
-  this.CustAddress.custAddressLane2 = this.UpdateEmailFormControls['inputAddress2'].value;
-  this.CustAddress.custLandmark = this.UpdateEmailFormControls['Landmark'].value;
-  this.CustAddress.custDistrict = this.UpdateEmailFormControls['inputCity'].value;
-  this.CustAddress.custState = this.UpdateEmailFormControls['inputState'].value;
-  this.CustAddress.custPincode = this.UpdateEmailFormControls['inputZip'].value;
+  this.CustAddress.custHouseNumber= this.addAddressFormControls['houseNumber'].value;
+  this.CustAddress.custAddressLane1= this.addAddressFormControls['inputAddress1'].value;
+  this.CustAddress.custAddressLane2 = this.addAddressFormControls['inputAddress2'].value;
+  this.CustAddress.custLandmark = this.addAddressFormControls['Landmark'].value;
+  this.CustAddress.custDistrict = this.addAddressFormControls['inputCity'].value;
+  this.CustAddress.custState = this.addAddressFormControls['inputState'].value;
+  this.CustAddress.custPincode = this.addAddressFormControls['inputZip'].value;
+  this.CustAddress.customerId = Number(sessionStorage.getItem("customerId"));
   this.addCustomerAddress();
 }
 
@@ -101,17 +102,16 @@ addCustomerAddress(){
     document.getElementById("UpdatePasswordContainer")?.classList.add("d-none");
     document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
     this.showResults = true;
-    // this.onGetAllAddressesOfCustomer();
+     this.onGetAllAddressesOfCustomer();
   }
 
-//   onGetAllAddressesOfCustomer(){
-//     this.loginService.listAllRestaurants().subscribe(abc => {
-//         this.array2 = abc;
-//         console.log(this.array2);
-//         this.showResults = true;
-//       },
-//        error => console.log(error));
-// }
+  onGetAllAddressesOfCustomer(){
+    this.loginService.listAllRestaurants(Number(sessionStorage.getItem("customerId"))).subscribe(abc => {
+        this.customerAddressArray = abc;
+        this.showResults = true;
+      },
+       error => console.log(error));
+}
 
 
 

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Cart } from '../cart';
-import { FoodMenu } from '../food-menu';
-import { Ordertable } from '../ordertable';
-import { Restaurant } from '../restaurant';
-import { RestaurantOperationsService } from '../restaurant-operations.service';
+import { Cart } from '../Classes/cart';
+import { FoodMenu } from '../Classes/food-menu';
+import { Ordertable } from '../Classes/ordertable';
+import { Restaurant } from '../Classes/restaurant';
+import { RestaurantOperationsService } from '../services/restaurant-operations.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
@@ -16,6 +16,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class FoodMenuPageComponent implements OnInit {
   quantity: number = 0;
+  totalPrice: number = 0;
   showResults = false;
   restaurant1: Restaurant | undefined;
   @Input() restaurant!: Restaurant;
@@ -62,9 +63,12 @@ export class FoodMenuPageComponent implements OnInit {
 
 
   iterateTable(){
-    this.ordertableArray.forEach(element => {
-  console.log(element.OrderCustId + " ***"+ element.orderFoodId+" ****"+element.orderRestId+"*** "+element.quantity);
+    
+    this.cart.orderTable.forEach(element => {
+  console.log("element.OrderCustId"+element.OrderCustId + " **element.orderFoodId*"+ element.orderFoodId+" **element.orderRestId**"+element.orderRestId+"*element.quantity** "+element.quantity);
+      this.totalPrice += element.quantity * element.orderFoodId
 });
+
   }
 
 
@@ -78,8 +82,11 @@ export class FoodMenuPageComponent implements OnInit {
        error => console.log(error));
   }
   placeOrder(){
+    this.cart.orderTable = JSON.parse(JSON.stringify(this.ordertableArray));
+    this.router.navigate(['UserSettings'])
     this.iterateTable();
-    this.cart.orderTable = this.ordertableArray;
+
+
   }
 
 }

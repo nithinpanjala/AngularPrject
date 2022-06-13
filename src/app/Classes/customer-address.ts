@@ -8,4 +8,5 @@ custLandmark !: String;
  custPincode !: String;
 custDistrict !: String;
 custState !: String;
+customerId!: number;
 }

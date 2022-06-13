@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RestaurantAdmin } from '../restaurant-admin';
-import { Restaurant } from '../restaurant';
-import { RestaurantAdminService } from '../restaurant-admin.service';
+import { RestaurantAdmin } from '../Classes/restaurant-admin';
+import { Restaurant } from '../Classes/restaurant';
+import { RestaurantAdminService } from '../services/restaurant-admin.service';
 
 @Component({
   selector: 'app-rest-adminsign-up',

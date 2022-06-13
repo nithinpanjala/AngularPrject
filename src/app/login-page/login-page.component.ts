@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication.service';
-import { Customer } from '../customer';
-import { CustomerSignUpServiceService } from '../customer-sign-up-service.service';
-import { LoginService } from '../login.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Customer } from '../Classes/customer';
+import { CustomerSignUpServiceService } from '../services/customer-sign-up-service.service';
+import { LoginService } from '../services/login.service';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login-page',

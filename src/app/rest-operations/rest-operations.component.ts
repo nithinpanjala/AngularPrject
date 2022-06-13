@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Restaurant } from '../restaurant';
-import { RestaurantOperationsService } from '../restaurant-operations.service';
+import { Restaurant } from '../Classes/restaurant';
+import { RestaurantOperationsService } from '../services/restaurant-operations.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 @Component({

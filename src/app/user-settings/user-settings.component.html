@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="d-flex flex-row justify-content-left ">
 
 
@@ -61,35 +63,35 @@
                                <h4>Add Address Form</h4>
                                 <div class="form-group">
                                     <label class="form-group" for="houseNumber"><h6>House Number</h6></label>
-                                    <input type="text" class="form-control" id="houseNumber" placeholder="1234 Main St">
+                                    <input type="text" class="form-control" id="houseNumber" placeholder="1234 Main St"  formControlName="houseNumber">
                                   </div>
                                 <div class="form-group">
                                   <label for="inputAddress1"> <h6>Address Lane 1</h6></label>
-                                  <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St">
+                                  <input type="text" class="form-control" id="inputAddress1"  formControlName="inputAddress1" placeholder="1234 Main St">
                                 </div>
                                 <div class="form-group">
                                   <label for="inputAddress2"><h6>Address Lane 2</h6></label>
-                                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                  <input type="text" class="form-control" id="inputAddress2"  formControlName="inputAddress2"  placeholder="Apartment, studio, or floor">
                                 </div>
                                 
                                 <div class="form-row d-flex flex-row justify-content-between m-2">
                                     <div class="form-group col-md-6 mr-1">
                                         <label for="Landmark"><h6>Landmark</h6></label>
-                                        <input type="text" class="form-control" id="Landmark">
+                                        <input type="text" class="form-control" id="Landmark"  formControlName="Landmark">
                                       </div>
                                   <div class="form-group col-md-6">
                                     <label for="inputCity"><h6>City</h6></label>
-                                    <input type="text" class="form-control" id="inputCity">
+                                    <input type="text" class="form-control" id="inputCity"  formControlName="inputCity">
                                   </div>
                                 </div>
                                 <div class="form-row d-flex flex-row justify-content-around ">  
                                     <div class="form-group col-md-6">
                                         <label for="inputState"><h6>State</h6></label>
-                                        <input type="text" class="form-control" id="inputState">
+                                        <input type="text" class="form-control" id="inputState"  formControlName="inputState">
                                       </div>  
                                   <div class="form-group col-md-6">
                                     <label for="inputZip"><h6>Zipcode</h6></label>
-                                    <input type="text" class="form-control" id="inputZip">
+                                    <input type="text" class="form-control" id="inputZip" formControlName="inputZip" >
                                   </div>
                                 </div>
                                 <div class="form-row d-flex flex-row justify-content-end mt-3">
@@ -114,18 +116,13 @@
                         <div class="col-12 col-md-6 col-lg-3 " *ngFor="let address of customerAddressArray;" >
                             <div  >
                             <div  class="shadow menu-item-card p-3 mb-3" >
-                                <!-- <h1 class="menu-card-title">House No : {{address.houseNo}}</h1> -->
-                                <h1 class="menu-card-title">Address Lane 1 :</h1>
-                                <h1 class="menu-card-title">Address Lane 2 : </h1>
-                                <h1 class="menu-card-title">Landmark</h1>
-                                <h1 class="menu-card-title">District :</h1>
-                                <h1 class="menu-card-title">State :</h1>
-                                <h1 class="menu-card-title">Pincode :</h1>
-                                <!-- <button class="custom-button"  [routerLink]="['/FoodMenuPage', address.restaurantId]" >Open Restro</button> -->
-                                <p class="wcu-card-description">
-                                    <!-- {{address.getaddress}} -->
-                                </p> 
-                            
+                                <h6 class="menu-card-title">House No : {{address.custHouseNumber}}</h6>
+                                <h6 class="menu-card-title">Address Lane 1 : {{address.custAddressLane1}}</h6>
+                                <h6 class="menu-card-title">Address Lane 2 : {{address.custAddressLane2}}</h6>
+                                <h6 class="menu-card-title">Landmark : {{address.custLandmark}}</h6>
+                                <h6 class="menu-card-title">District : {{address.custDistrict}}</h6>
+                                <h6 class="menu-card-title">State : {{address.custState}}</h6>
+                                <h6 class="menu-card-title">Pincode : {{address.custPincode}}</h6>            
                             </div>
                         </div>
                         </div>
@@ -233,7 +230,7 @@
     
     </div>
 
-
+    <app-footer></app-footer>
 
 
 

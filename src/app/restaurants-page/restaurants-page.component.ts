@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from '../app.component';
-import { FoodMenu } from '../food-menu';
-import { Restaurant } from '../restaurant';
-import { RestaurantOperationsService } from '../restaurant-operations.service';
+import { FoodMenu } from '../Classes/food-menu';
+import { Restaurant } from '../Classes/restaurant';
+import { RestaurantOperationsService } from '../services/restaurant-operations.service';
 
 @Component({
   selector: 'app-restaurants-page',

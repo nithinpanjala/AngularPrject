@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FoodMenu } from './food-menu';
-import { Restaurant } from './restaurant';
+import { FoodMenu } from '../Classes/food-menu';
+import { Restaurant } from '../Classes/restaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,12 @@ export class RestaurantOperationsService {
 
 
   }
+  readRestaurant(restaurantId : number): Observable<Restaurant>{
 
+    return this.httpClient.get<Restaurant>(`${this.baseURL}getRestaurant/`+restaurantId);
+
+
+  }
 
   updateDish(quantity: number , dishId:number): Observable<FoodMenu>{
     const params = new HttpParams().set('quantity',quantity).set('DishId',dishId);
@@ -53,6 +58,13 @@ export class RestaurantOperationsService {
     return this.httpClient.post(`${this.baseURL}createRestaurant`, restaurant);
 
   }
+
+  createDish(foodMenu : FoodMenu): Observable<Object>{
+    return this.httpClient.post(`${this.foodListURl}addDishes`, foodMenu);
+
+  }
+
+
   updateRestaurant(restaurant : Restaurant): Observable<Object>{
   
     return this.httpClient.put<Restaurant>(`${this.baseURL}`+'updateRestaurant/',restaurant);

@@ -1,3 +1,5 @@
+import { Restaurant } from "./restaurant";
+
 export class RestaurantAddress {
 
 restaurantAddressId!: number;
@@ -8,4 +10,5 @@ restaurantLandmark !: String;
 restaurantPincode !: String;
 restaurantDistrict !: String;
 restaurantState !: String;
+restaurant!: Restaurant;
 }

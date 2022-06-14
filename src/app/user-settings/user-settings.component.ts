@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Customer } from '../Classes/customer';
 import { CustomerSignUpServiceService } from '../services/customer-sign-up-service.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { async, Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { CustomerAddress } from '../Classes/customer-address';
 
@@ -39,6 +39,13 @@ export class UserSettingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loginService.getCustomerById(Number(sessionStorage.getItem("customerId"))).subscribe((val=>{
+      this.CustAddress.customer = val;
+      console.log(this.CustAddress.customer ,"//////////////////");
+    }),
+    error => console.log(error));
+  
+  
   }
 
 
@@ -59,7 +66,7 @@ export class UserSettingsComponent implements OnInit {
     inputState: ['',[Validators.required]],
     inputZip: ['',[Validators.required]],
   });
-onAddAddressSubmit(){
+  async onAddAddressSubmit(){
   this.CustAddress.custHouseNumber= this.addAddressFormControls['houseNumber'].value;
   this.CustAddress.custAddressLane1= this.addAddressFormControls['inputAddress1'].value;
   this.CustAddress.custAddressLane2 = this.addAddressFormControls['inputAddress2'].value;
@@ -67,17 +74,15 @@ onAddAddressSubmit(){
   this.CustAddress.custDistrict = this.addAddressFormControls['inputCity'].value;
   this.CustAddress.custState = this.addAddressFormControls['inputState'].value;
   this.CustAddress.custPincode = this.addAddressFormControls['inputZip'].value;
-  this.CustAddress.customerId = Number(sessionStorage.getItem("customerId"));
-  this.addCustomerAddress();
-}
+ 
 
-addCustomerAddress(){
   this.loginService.addAddress( this.CustAddress)
   .subscribe(abc => {
-    console.log(abc);
+    this.ListMyAddresses();
   },
    error => console.log(error));
 }
+
   AddAddress(){
     document.getElementById("AddAddressContainer")?.classList.remove("d-none");
     document.getElementById("ListAddressContainer")?.classList.add("d-none");

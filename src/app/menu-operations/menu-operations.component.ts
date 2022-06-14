@@ -15,7 +15,7 @@ import {MatRadioModule} from '@angular/material/radio';
 
 export class MenuOperationsComponent implements OnInit {
   showResults!: Boolean;
-  AddDishItem !: FoodMenu;
+  AddDishItem: FoodMenu = new FoodMenu;
   ListAllDishesArray: FoodMenu[] = [];
   updateSelectedDishID!: number;
   updateItem !: FoodMenu;
@@ -35,6 +35,13 @@ export class MenuOperationsComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    const resId = Number(sessionStorage.getItem('adminrestaurantId'));
+
+    this.restaurantOperationsService.readRestaurant(resId).subscribe((val=>{
+      this.AddDishItem.restaurant = val;
+      console.log(this.AddDishItem.restaurant,"//////////////////");
+    }))
     
     const jwtToken =this.cookies.get('rest_admin_jwt_token')
     if(!jwtToken){
@@ -73,18 +80,18 @@ export class MenuOperationsComponent implements OnInit {
     console.log(" Value is : ", value );
  }
   onAddDishesSubmit(){
-    this.AddDishItem = new FoodMenu;
     console.log("this.form['formfoodName'].value");
     console.log(this.form['formfoodName'].value);
     this.AddDishItem.foodName = this.form['formfoodName'].value;
     this.AddDishItem.foodPrice = Number(this.form['formfoodPrice'].value);
     this.AddDishItem.foodQuantityAvailable = Number(this.form['formfoodQuantityAvailable'].value);
     this.AddDishItem.isVegeterian = this.form['formisVegeterian'].value;
-    this.AddDishItem.restaurantId = Number(sessionStorage.getItem("adminrestaurantId"));
+    //this.AddDishItem.restaurantId = Number(sessionStorage.getItem("adminrestaurantId"));
      this.saveDish();
 
   }
   saveDish(){
+    console.log(this.AddDishItem)
     this.restaurantOperationsService.createDish(this.AddDishItem )
     .subscribe(abc => {
       this.ListAllDishes();

@@ -23,6 +23,11 @@ export class LoginService {
     return this.httpClient.get<Customer>(`${this.baseURL}`+'readUserByUserNameAndPassword/'+`${customerName}/`+`${customerPassword}`);
   
   }
+
+  getCustomerById(customerId: number): Observable<Customer>{
+    return this.httpClient.get<Customer>(`${this.baseURL}`+'getUserById/'+`${customerId}`);
+  
+  }
   getAllCustomer(): Observable<Customer[]>{
     return this.httpClient.get<Customer[]>(`${this.baseURL}`+'getAllCustomers/');
   }
@@ -56,11 +61,19 @@ export class LoginService {
   }
 
 addAddress(CustomerAddress : CustomerAddress): Observable<Customer>{
-  return this.httpClient.post<Customer>(`${this.baseCustAddURL}`+'addUserAddress/',CustomerAddress);
+  return this.httpClient.post<Customer>(`${this.baseCustAddURL}`+'addAddress/',CustomerAddress);
   }
 
   listAllRestaurants(customerId:number): Observable<CustomerAddress[]>{
   return this.httpClient.get<CustomerAddress[]>(`${this.baseCustAddURL}`+'getAllAddress/'+`${customerId}`);
 }
+
+
+getSelectedAdd(addId:number): Observable<CustomerAddress>{
+  return this.httpClient.get<CustomerAddress>(`${this.baseCustAddURL}`+'getSelectedAddress/'+`${addId}`);
+}
+
+
+
 
 }

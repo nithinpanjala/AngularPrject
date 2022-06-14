@@ -6,5 +6,6 @@ export class FoodMenu {
     foodPrice!: number;
     foodQuantityAvailable !: number;
     isVegeterian !: String;
-    restaurantId !: number ;
-};
+    restaurant!: Restaurant;         
+    
+}

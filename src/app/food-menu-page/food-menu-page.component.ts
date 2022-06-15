@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Cart } from '../Classes/cart';
 import { FoodMenu } from '../Classes/food-menu';
-import { Ordertable } from '../Classes/ordertable';
+import { orderItems } from '../Classes/orderItems';
 import { Restaurant } from '../Classes/restaurant';
 import { RestaurantOperationsService } from '../services/restaurant-operations.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginService } from '../services/login.service';
 import { CustomerAddress } from '../Classes/customer-address';
 import { CartServicesService } from '../services/cart-services.service';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-food-menu-page',
@@ -25,13 +26,12 @@ export class FoodMenuPageComponent implements OnInit {
   @Input() restaurant!: Restaurant;
   restaurant2: Restaurant | undefined;
   customerAddressArray: CustomerAddress[] = [];
-  cart: Cart = new Cart;
   foodMenuArray: FoodMenu[] = [];
-  ordertableArray: Ordertable[] = [];
-
-
-
-
+  selectedAddress !: CustomerAddress;
+  oneItem: orderItems = new orderItems;
+  cart !: Cart;
+  cusId!: number;
+  exx!: number;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -47,51 +47,60 @@ export class FoodMenuPageComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const restaurantIdFromRoute = Number(routeParams.get('restaurantId'));
     sessionStorage.setItem('restaurantId', restaurantIdFromRoute.toString());
-
+    this.cusId = Number(routeParams.get('customerId'));
     this.OpenRestaurant(restaurantIdFromRoute);
-  }
 
 
 
-
-  addtoCart(id: String, foodId: number) {
-
-    const oneItem = {
-      "OrderCustId": Number(sessionStorage.getItem("customerId")),
-      "orderRestId": Number(sessionStorage.getItem("restaurantId")),
-      "orderFoodId": foodId,
-      "quantity": Number(id),
-    };
-    this.snack.open(oneItem.orderFoodId + "added to cart", "ok", {
-      duration: 2000, verticalPosition: 'top',
-      horizontalPosition: 'center',
-    });
-
-    this.ordertableArray.push(oneItem);
-  }
-
-
-  iterateTable() {
-
-    this.cart.orderTable.forEach(element => {
-      console.log("element.OrderCustId" + element.OrderCustId + " **element.orderFoodId*" + element.orderFoodId + " **element.orderRestId**" + element.orderRestId + "*element.quantity** " + element.quantity);
-      this.totalPrice += element.quantity * element.orderFoodId
-    });
 
   }
-
 
   OpenRestaurant(restroId: number) {
     this.restaurantOperationsService.selectedRestro(restroId)
       .subscribe(abc => {
-        console.log(abc);
+
         this.foodMenuArray = abc;
         this.showResults = true;
       },
         error => console.log(error));
   }
+
+
+
+  addtoCart(id: String, foodId: number) {
+
+    this.oneItem.OrderCustId = this.cusId;
+    this.oneItem.orderRestId = Number(sessionStorage.getItem("restaurantId")),
+      this.oneItem.orderFoodId = foodId,
+      this.oneItem.quantity = Number(id),
+      this.stupidfunction();
+
+  }
+  async  stupidfunction(){
+    this.cartService.readCart(Number(sessionStorage.getItem("cartNo")))
+        .subscribe(async abc => {
+          this.cart =await  JSON.parse(JSON.stringify(abc));
+          this.oneItem.cart =await  JSON.parse(JSON.stringify(abc));
+        },
+          error => console.log(error));
+      this.addOrdersToOrderTable();
+  }
+  async  addOrdersToOrderTable() {
+    this.cartService.CreateOrderItems(this.oneItem)
+      .subscribe(async abc => {
+        await console.log(abc);
+      },
+        error => console.log(error));
+  }
+
+
   placeOrder() {
-    this.cart.orderTable = JSON.parse(JSON.stringify(this.ordertableArray));
+    this.loginService.getCustomerById(Number(sessionStorage.getItem("customerId"))).subscribe((val => {
+      this.cart.customer = JSON.parse(JSON.stringify(val));
+    }),
+      error => console.log(error));
+
+    //  this.cart.orderItems = JSON.parse(JSON.stringify(this.ordertableArray));
     document.getElementById("FoodMenuContainer")?.classList.add("d-none");
     document.getElementById("ListAddressContainer")?.classList.remove("d-none");
     this.displayAddress();
@@ -103,38 +112,34 @@ export class FoodMenuPageComponent implements OnInit {
 
   displayAddress() {
     this.loginService.listAllRestaurants(Number(sessionStorage.getItem("customerId"))).subscribe(abc => {
-      this.customerAddressArray = abc;
-      this.showResults = true;
+      this.customerAddressArray = JSON.parse(JSON.stringify(abc));
     },
       error => console.log(error));
   }
 
+
   deliveryAddreessSelected(selectedAddressId: number) {
-    this.loginService.getSelectedAdd(selectedAddressId)
-      .subscribe(abc => {
-        console.log(abc);
-        this.cart.deliveryAddress = abc;
-      },
-        error => console.log(error));
-    console.log("**********************");
-    console.log(this.cart);
-    console.log("**********************");
+    this.customerAddressArray.forEach(element => {
+      if (element.custAddressId == selectedAddressId) {
+        this.cart.deliveryAddress = JSON.parse(JSON.stringify(element));
+      }
+    });
     this.addDetailsToCart();
-    this.router.navigate(['UserSettings'])
+
   }
 
   addDetailsToCart() {
-    console.log("***********in the box in the box***********");
+
+    console.log("********front ENDDDDDDDD***************");
     console.log(this.cart);
-    console.log("********in the box in the box***************");
-    this.cartService.createCart(this.cart)
+    console.log("********front ENDDDDDDDD***************");
+    this.cartService.updateCart(this.cart)
       .subscribe(abc => {
+        console.log("********Output Output Output Output***************");
         console.log(abc);
+        console.log("********Output Output Output Output***************");
       },
         error => console.log(error));
 
   }
-
-
-
 }

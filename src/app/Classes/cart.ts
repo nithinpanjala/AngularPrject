@@ -1,9 +1,11 @@
+import { Customer } from "./customer";
 import { CustomerAddress } from "./customer-address";
-import { Ordertable } from "./ordertable";
+import { orderItems } from "./orderItems";
 
 export class Cart {
 cartNo !:number;
 totalPrice!: number;
 deliveryAddress!: CustomerAddress;
- orderTable!: Ordertable[];
+orderItems!: orderItems[];
+ customer !: Customer;
 }

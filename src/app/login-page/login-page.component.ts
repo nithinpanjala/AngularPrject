@@ -7,6 +7,8 @@ import { Customer } from '../Classes/customer';
 import { CustomerSignUpServiceService } from '../services/customer-sign-up-service.service';
 import { LoginService } from '../services/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Cart } from '../Classes/cart';
+import { CartServicesService } from '../services/cart-services.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -18,6 +20,7 @@ export class LoginPageComponent implements OnInit {
   customerName !: "String";
   customerPassword !: "String";
   submitted = false;
+  cart : Cart = new Cart;
 
   array1: Customer[] = [];
   searchResultsEl = document.getElementById("exploreMenuSection");
@@ -30,6 +33,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private customerSignUpServiceService: CustomerSignUpServiceService,
     private loginService: LoginService,
+    private cartService : CartServicesService,
     private authService: AuthenticationService,
     private cookies: CookieService
 
@@ -71,7 +75,7 @@ export class LoginPageComponent implements OnInit {
     this.loginService.getCustomer(this.customerName, this.customerPassword)
       .subscribe(abc => {
         console.log(abc);
-
+        this.cart.customer = abc;
         if (abc == null) {
 
           //this.snack.open("Bad credentials", "ok", { duration: 2000 })
@@ -89,7 +93,7 @@ export class LoginPageComponent implements OnInit {
           })
 
           console.log('success')
-          
+          this.assignCartNo();
           //this.snack.open("Success", "ok", { duration: 1000 })
           const a = abc.customerName.toString();
           const b = abc.customerId.toString();
@@ -102,6 +106,13 @@ export class LoginPageComponent implements OnInit {
 
 
       },
+        error => console.log(error));
+  }
+  assignCartNo(){
+    this.cartService.createCart(this.cart).subscribe((abc)=>{
+      const a = String(abc.cartNo);
+      sessionStorage.setItem("cartNo",a);
+    },
         error => console.log(error));
   }
 

@@ -1,8 +1,8 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Customer } from '../customer';
-import { CustomerSignUpServiceService } from '../customer-sign-up-service.service';
+import { Customer } from '../Classes/customer';
+import { CustomerSignUpServiceService } from '../services/customer-sign-up-service.service';
 import { Injectable } from '@angular/core';
 
 @Component({

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { FoodMenu } from '../food-menu';
-import { RestaurantOperationsService } from '../restaurant-operations.service';
-
-
+import { FoodMenu } from '../Classes/food-menu';
+import { RestaurantOperationsService } from '../services/restaurant-operations.service';
+import { Restaurant } from '../Classes/restaurant';
+import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
   selector: 'app-menu-operations',
@@ -15,6 +15,7 @@ import { RestaurantOperationsService } from '../restaurant-operations.service';
 
 export class MenuOperationsComponent implements OnInit {
   showResults!: Boolean;
+  AddDishItem: FoodMenu = new FoodMenu;
   ListAllDishesArray: FoodMenu[] = [];
   updateSelectedDishID!: number;
   updateItem !: FoodMenu;
@@ -34,11 +35,18 @@ export class MenuOperationsComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    const resId = Number(sessionStorage.getItem('adminrestaurantId'));
+
+    this.restaurantOperationsService.readRestaurant(resId).subscribe((val=>{
+      this.AddDishItem.restaurant = val;
+      console.log(this.AddDishItem.restaurant,"//////////////////");
+    }))
     
-    const jwtToken =this.cookies.get('jwt_token')
+    const jwtToken =this.cookies.get('rest_admin_jwt_token')
     if(!jwtToken){
       
-      this.router.navigate(['login'])
+      this.router.navigate(['restAdminLogin'])
     }
     else{
       console.log(jwtToken)
@@ -60,26 +68,50 @@ export class MenuOperationsComponent implements OnInit {
 }
 
 
+
+
   AddDishes(){
     document.getElementById("AddDishesContainer")?.classList.remove("d-none");
     document.getElementById("ListAllDishesContainer")?.classList.add("d-none");
     document.getElementById("UpdateDishContainer")?.classList.add("d-none");
     document.getElementById("OpeningTiles")?.classList.add("d-none");
   }
+  onItemChange(value: any){
+    console.log(" Value is : ", value );
+ }
   onAddDishesSubmit(){
+    console.log("this.form['formfoodName'].value");
+    console.log(this.form['formfoodName'].value);
+    this.AddDishItem.foodName = this.form['formfoodName'].value;
+    this.AddDishItem.foodPrice = Number(this.form['formfoodPrice'].value);
+    this.AddDishItem.foodQuantityAvailable = Number(this.form['formfoodQuantityAvailable'].value);
+    this.AddDishItem.isVegeterian = this.form['formisVegeterian'].value;
+    //this.AddDishItem.restaurantId = Number(sessionStorage.getItem("adminrestaurantId"));
+     this.saveDish();
 
+  }
+  saveDish(){
+    console.log(this.AddDishItem)
+    this.restaurantOperationsService.createDish(this.AddDishItem )
+    .subscribe(abc => {
+      this.ListAllDishes();
+    },
+     error => console.log(error));
+  
+  
   }
   AddDishesForm = this.fb.group({
 
-    restaurantName: ['', [Validators.required]],
-    restaurantBuildingNumber: ['', [Validators.required]],
-    restaurantAddressLane1: ['',[Validators.required]],
-    restaurantAddressLane2: ['',[Validators.required]],
-    restaurantLandmark: ['',[Validators.required]],
-    restaurantDistrict: ['',[Validators.required]],
-    restaurantState: ['',[Validators.required]],
-    restaurantPincode: ['',[Validators.required]],
+    formfoodId: ['', [Validators.required]],
+    formfoodName: ['', [Validators.required]],
+    formfoodPrice: ['',[Validators.required]],
+    formfoodQuantityAvailable: ['',[Validators.required]],
+    formisVegeterian: ['',[Validators.required]],
 });
+
+get form(){
+  return this.AddDishesForm.controls
+}
 
 
 

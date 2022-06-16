@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
-import { Customer } from './customer';
-import { CustomerAddress } from './customer-address';
+import { Customer } from '../Classes/customer';
+import { CustomerAddress } from '../Classes/customer-address';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,11 @@ export class LoginService {
 
   getCustomer(customerName: String, customerPassword : String): Observable<Customer>{
     return this.httpClient.get<Customer>(`${this.baseURL}`+'readUserByUserNameAndPassword/'+`${customerName}/`+`${customerPassword}`);
+  
+  }
+
+  getCustomerById(customerId: number): Observable<Customer>{
+    return this.httpClient.get<Customer>(`${this.baseURL}`+'getUserById/'+`${customerId}`);
   
   }
   getAllCustomer(): Observable<Customer[]>{
@@ -55,12 +60,20 @@ export class LoginService {
     return this.httpClient.put<Customer>(`${this.baseURL}`+'updateUserEmail/'+`${customerName}/`+`${customerPassword}/`+`${newUserEmail}`,Customer);
   }
 
-addAddress(CustomerAddress : CustomerAddress){
-  return this.httpClient.post<Customer>(`${this.baseCustAddURL}`+'updateUserEmail/'+`${CustomerAddress}/`,Customer);
+addAddress(CustomerAddress : CustomerAddress): Observable<Customer>{
+  return this.httpClient.post<Customer>(`${this.baseCustAddURL}`+'addAddress/',CustomerAddress);
   }
 
-getAllAddresses(customerName: String, customerPassword : String){
-  return this.httpClient.get<Customer>(`${this.baseURL}`+'readUserByUserNameAndPassword/'+`${customerName}/`+`${customerPassword}`);
+  listAllRestaurants(customerId:number): Observable<CustomerAddress[]>{
+  return this.httpClient.get<CustomerAddress[]>(`${this.baseCustAddURL}`+'getAllAddress/'+`${customerId}`);
 }
+
+
+getSelectedAdd(addId:number): Observable<CustomerAddress>{
+  return this.httpClient.get<CustomerAddress>(`${this.baseCustAddURL}`+'getSelectedAddress/'+`${addId}`);
+}
+
+
+
 
 }

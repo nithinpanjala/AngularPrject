@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication.service';
-import { Customer } from '../customer';
-import { CustomerSignUpServiceService } from '../customer-sign-up-service.service';
-import { LoginService } from '../login.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Customer } from '../Classes/customer';
+import { CustomerSignUpServiceService } from '../services/customer-sign-up-service.service';
+import { LoginService } from '../services/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Cart } from '../Classes/cart';
+import { CartServicesService } from '../services/cart-services.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -18,6 +20,7 @@ export class LoginPageComponent implements OnInit {
   customerName !: "String";
   customerPassword !: "String";
   submitted = false;
+  cart : Cart = new Cart;
 
   array1: Customer[] = [];
   searchResultsEl = document.getElementById("exploreMenuSection");
@@ -30,6 +33,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private customerSignUpServiceService: CustomerSignUpServiceService,
     private loginService: LoginService,
+    private cartService : CartServicesService,
     private authService: AuthenticationService,
     private cookies: CookieService
 
@@ -71,7 +75,7 @@ export class LoginPageComponent implements OnInit {
     this.loginService.getCustomer(this.customerName, this.customerPassword)
       .subscribe(abc => {
         console.log(abc);
-
+        this.cart.customer = abc;
         if (abc == null) {
 
           //this.snack.open("Bad credentials", "ok", { duration: 2000 })
@@ -89,12 +93,13 @@ export class LoginPageComponent implements OnInit {
           })
 
           console.log('success')
-          
+
           //this.snack.open("Success", "ok", { duration: 1000 })
           const a = abc.customerName.toString();
           const b = abc.customerId.toString();
           sessionStorage.setItem('customerName', a);
           sessionStorage.setItem('customerId', b);
+          sessionStorage.setItem('cart', JSON.stringify(this.cart));
           this.router.navigateByUrl('home');
 
         }
@@ -104,7 +109,7 @@ export class LoginPageComponent implements OnInit {
       },
         error => console.log(error));
   }
-
+ 
   getAllCustomers() {
     this.loginService.getAllCustomer()
       .subscribe(abc => {

@@ -1,60 +1,63 @@
 
-<div class="container mt-5 ">
-    <div class="row d-flex flex-row justify-content-center">
-        <div class="col-12 mt-5 text-center">
-            <h1 class="menu-section-heading">Sign Up</h1>
-        </div>
-        <div class="m-2 col-8">
-            <div class="shadow  menu-item-card p-5 m-5">
-                <div class="form d- flex flex- column justify-content-center">
-                    <form [formGroup]="RestAdminSignUpForm" (ngSubmit)="onSubmit()">
-                        
-                        
-                        <p class="d-flex flex-column justify-content-center">
-                            <label for="adminName">Admin Name</label>
-                            <input type="text" id="adminName" name="adminName" formControlName="adminName">
-                        </p>
-            
-                        <p class="d-flex flex-column justify-content-center ">
-                            <label for="adminPassword">Admin Password</label>
-                            <input type="password" id="adminPassword" name="adminPassword" formControlName="adminPassword">
-                        </p>
+<div class="rest-section-bg-container">
+    <div class="container ">
+        <div class="row d-flex  ">
+            <div class="flex-row ">
+                <div class="col-6  justify-content-center shadow  menu-item-card p-3 mt-4">
+                    <div>
+                        <h4 class="text-center">Restaurant Sign Up !!</h4>
+                    </div>
+                    <div class="form d- flex flex- column justify-content-center ">
+                        <form [formGroup]="RestAdminSignUpForm" (ngSubmit)="onSubmit()">
+                            
+                            
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="adminName">Admin Name</label>
+                                <input type="text" id="adminName" name="adminName" formControlName="adminName">
+                            </p>
+                
+                            <p class="d-flex flex-column justify-content-center ">
+                                <label for="adminPassword">Admin Password</label>
+                                <input type="password" id="adminPassword" name="adminPassword" formControlName="adminPassword">
+                            </p>
+    
+                            <p class="d-flex flex-column justify-content-center ">
+                                <label for="adminFirstName" class="mr-5">Admin First Name </label>
+                                <input type="text" id="adminFirstName" name="adminFirstName" formControlName="adminFirstName">
+                            </p>
+                
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="adminLastName">Admin Last Name </label>
+                                <input type="text" id="adminLastName" name="adminLastName" formControlName="adminLastName">
+                            </p>
+    
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="adminMobile">Admin Mobile </label>
+                                <input type="text" id="adminMobile" name="adminMobile" formControlName="adminMobile">
+                            </p>
+    
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="adminEmail">Admin Email </label>
+                                <input type="text" id="adminEmail" name="adminEmail" formControlName="adminEmail">
+                            </p>
+                            <p class="d-flex flex-column justify-content-center">
+                                <label for="restaurantName">Restaurant Name </label>
+                                <input type="text" id="restaurantName" name="restaurantName" formControlName="restaurantName">
+                            </p>
+                            <p>
+                                <button class="custom-button " type="submit">Submit</button>
+                            </p>
+                
+                        </form>
+                    </div>
 
-                        <p class="d-flex flex-column justify-content-center ">
-                            <label for="adminFirstName" class="mr-5">Admin First Name </label>
-                            <input type="text" id="adminFirstName" name="adminFirstName" formControlName="adminFirstName">
-                        </p>
-            
-                        <p class="d-flex flex-column justify-content-center">
-                            <label for="adminLastName">Admin Last Name </label>
-                            <input type="text" id="adminLastName" name="adminLastName" formControlName="adminLastName">
-                        </p>
 
-                        <p class="d-flex flex-column justify-content-center">
-                            <label for="adminMobile">Admin Mobile </label>
-                            <input type="text" id="adminMobile" name="adminMobile" formControlName="adminMobile">
-                        </p>
-
-                        <p class="d-flex flex-column justify-content-center">
-                            <label for="adminEmail">Admin Email </label>
-                            <input type="text" id="adminEmail" name="adminEmail" formControlName="adminEmail">
-                        </p>
-                        <p class="d-flex flex-column justify-content-center">
-                            <label for="restaurantName">Restaurant Name </label>
-                            <input type="text" id="restaurantName" name="restaurantName" formControlName="restaurantName">
-                        </p>
-                        <p>
-                            <button class="custom-button " type="submit">Submit</button>
-                        </p>
-            
-                    </form>
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
+
 
 
 

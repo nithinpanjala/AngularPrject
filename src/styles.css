@@ -8,49 +8,31 @@
 
 #navItem1 {
     color: #323f4b;
-    font-family: "Roboto";
+    font-family: "cursive";
 }
 
-#navItem2 {
-    color: #323f4b;
-    font-family: "Roboto";
-}
-
-#navItem3 {
-    color: #323f4b;
-    font-family: "Roboto";
-}
-
-
-#navItem4 {
-    color: #323f4b;
-    font-family: "Roboto";
-}
-#navItem5 {
-    color: #323f4b;
-    font-family: "Roboto";
-}
-#navItem6 {
-    color: #323f4b;
-    font-family: "Roboto";
+.rest-section-bg-container {
+    background-image: url("src\assets\New folder\pexels-dana-tentis-750073.jpg");
+    background-size: cover;
+    height: 100vh;
 }
 
 .banner-section-bg-container {
-    background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/foodmunch-banner-bg.png");
+    background-image: url("src\assets\New folder\pexels-creative-vix-370984.jpg");
     height: 100vh;
     background-size: cover;
 }
 
 .banner-heading {
     color: white;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 45px;
     font-weight: 300;
 }
 
 .banner-caption {
     color: #f5f7fa;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 24px;
     font-weight: 300;
 }
@@ -63,6 +45,7 @@
     border-width: 0;
     border-radius: 8px;
     margin-right: 10px;
+    font-family: "cursive";
 }
 .custom-button2 {
     color: white;
@@ -72,6 +55,7 @@
     border-width: 0;
     border-radius: 8px;
     margin-right: 10px;
+    font-family: "cursive";
 }
 
 .custom-outline-button {
@@ -83,6 +67,7 @@
     border-width: 1px;
     border-color: #d0b200;
     border-radius: 8px;
+    font-family: "cursive";
 }
 .custom-outline-button2 {
     color: #d0b200;
@@ -93,6 +78,7 @@
     border-width: 1px;
     border-color: #d0b200;
     border-radius: 8px;
+    font-family: "cursive";
 }
 
 
@@ -102,14 +88,14 @@
 
 .wcu-section-heading {
     color: #183b56;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 28px;
     font-weight: 700;
 }
 
 .wcu-section-description {
     color: #5a7184;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 16px;
 }
 
@@ -129,14 +115,14 @@
 
 .wcu-card-title {
     color: #323f4b;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 22px;
     font-weight: 500;
 }
 
 .wcu-card-description {
     color: #7b8794;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 16px;
 }
 
@@ -152,9 +138,10 @@
 
 .menu-section-heading {
     color: #183b56;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 28px;
     font-weight: 700;
+    background-color: #f9fbfe;
 }
 
 .menu-item-image {
@@ -163,21 +150,24 @@
 
 .menu-card-title {
     color: #323f4b;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 18px;
     font-weight: 500;
     margin-top: 24px;
+    background-color: #f9fbfe;
 }
 
 .menu-item-link {
+
     color: #d0b200;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 14px;
     font-weight: 500;
 }
 
 .menu-item-card {
     border-radius: 16px;
+    background-color: #f9fbfe;
 }
 
 .healthy-food-section {
@@ -190,14 +180,14 @@
 
 .healthy-food-section-heading {
     color: #183b56;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 28px;
     font-weight: 700;
 }
 
 .healthy-food-section-description {
     color: #5a7184;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 16px;
 }
 
@@ -211,14 +201,14 @@
 
 .delivery-and-payment-section-heading {
     color: #183b56;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 28px;
     font-weight: 700;
 }
 
 .delivery-and-payment-section-description {
     color: #5a7184;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 16px;
 }
 
@@ -234,14 +224,14 @@
 
 .thanking-customers-section-heading {
     color: #183b56;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 28px;
     font-weight: 700;
 }
 
 .thanking-customers-section-description {
     color: #5a7184;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 16px;
 }
 
@@ -262,7 +252,7 @@
 .follow-us-section-heading {
     text-align: center;
     color: #183b56;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 28px;
     font-weight: 700;
 }
@@ -290,7 +280,7 @@
 
 .footer-section-mail-id {
     color: #959ead;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-weight: bold;
     font-size: 16px;
     margin-top: 20px;
@@ -298,6 +288,6 @@
 
 .footer-section-address {
     color: #959ead;
-    font-family: "Roboto";
+    font-family: "cursive";
     font-size: 14px;
 }

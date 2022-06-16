@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RestaurantAdmin } from '../restaurant-admin';
-import { RestaurantAdminService } from '../restaurant-admin.service';
+import { RestaurantAdmin } from '../Classes/restaurant-admin';
+import { RestaurantAdminService } from '../services/restaurant-admin.service';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-restaurant-admin-page',
   templateUrl: './restaurant-admin-page.component.html',

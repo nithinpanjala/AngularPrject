@@ -2,7 +2,7 @@ import { Cart } from "./cart";
 
 export class orderItems {
 
-    OrderCustId!: number;
+    orderCustId!: number;
     orderRestId!: number;
     orderFoodId!: number;
     quantity!: number;

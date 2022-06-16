@@ -93,12 +93,13 @@ export class LoginPageComponent implements OnInit {
           })
 
           console.log('success')
-          this.assignCartNo();
+
           //this.snack.open("Success", "ok", { duration: 1000 })
           const a = abc.customerName.toString();
           const b = abc.customerId.toString();
           sessionStorage.setItem('customerName', a);
           sessionStorage.setItem('customerId', b);
+          sessionStorage.setItem('cart', JSON.stringify(this.cart));
           this.router.navigateByUrl('home');
 
         }
@@ -108,14 +109,7 @@ export class LoginPageComponent implements OnInit {
       },
         error => console.log(error));
   }
-  assignCartNo(){
-    this.cartService.createCart(this.cart).subscribe((abc)=>{
-      const a = String(abc.cartNo);
-      sessionStorage.setItem("cartNo",a);
-    },
-        error => console.log(error));
-  }
-
+ 
   getAllCustomers() {
     this.loginService.getAllCustomer()
       .subscribe(abc => {

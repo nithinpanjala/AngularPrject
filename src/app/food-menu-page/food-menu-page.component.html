@@ -1,6 +1,7 @@
 
 
 <app-header></app-header>
+
 <div  id="FoodMenuContainer">
 <div class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
     <div class="container">
@@ -13,7 +14,7 @@
                     <div class="shadow menu-item-card p-3 mb-3">
                         <h6 class="menu-card-title">Item Name: <span class="menu-card-title">{{item.foodName}}</span></h6>
                         <h4 class="menu-card-title">Price: {{item.foodPrice}}</h4>
-                        <h4 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}}</h4>
+                        <h4 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}} </h4>
                         <h1 class="menu-card-title"> </h1>
                         <label for="quantity" >Quantity :</label>
                         <input #quantity type="number" id="quantity" name="quantity" min="1" max={{item.foodQuantityAvailable}}>
@@ -53,6 +54,6 @@
             </div>
         </div>
     </div>
-</div>
 
+</div>
 <app-footer></app-footer>

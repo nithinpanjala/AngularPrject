@@ -28,10 +28,8 @@ export class FoodMenuPageComponent implements OnInit {
   customerAddressArray: CustomerAddress[] = [];
   foodMenuArray: FoodMenu[] = [];
   selectedAddress !: CustomerAddress;
-  oneItem: orderItems = new orderItems;
-  cart !: Cart;
-  cusId!: number;
-  exx!: number;
+  orderItemsArray: orderItems[] = [];
+cart: Cart = new Cart;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -47,9 +45,9 @@ export class FoodMenuPageComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const restaurantIdFromRoute = Number(routeParams.get('restaurantId'));
     sessionStorage.setItem('restaurantId', restaurantIdFromRoute.toString());
-    this.cusId = Number(routeParams.get('customerId'));
     this.OpenRestaurant(restaurantIdFromRoute);
 
+    this.cart = JSON.parse(sessionStorage.getItem('cart') || '{}');
 
 
 
@@ -68,45 +66,22 @@ export class FoodMenuPageComponent implements OnInit {
 
 
   addtoCart(id: String, foodId: number) {
+    var oneItem = new orderItems();
+ oneItem.orderCustId = Number(sessionStorage.getItem("customerId")),
+   oneItem.orderRestId = Number(sessionStorage.getItem("restaurantId")),
+   oneItem.orderFoodId = foodId,
+     oneItem.quantity = Number(id),
+     this.orderItemsArray.push(oneItem);
 
-    this.oneItem.OrderCustId = this.cusId;
-    this.oneItem.orderRestId = Number(sessionStorage.getItem("restaurantId")),
-      this.oneItem.orderFoodId = foodId,
-      this.oneItem.quantity = Number(id),
-      this.stupidfunction();
-
-  }
-  async  stupidfunction(){
-    this.cartService.readCart(Number(sessionStorage.getItem("cartNo")))
-        .subscribe(async abc => {
-          this.cart =await  JSON.parse(JSON.stringify(abc));
-          this.oneItem.cart =await  JSON.parse(JSON.stringify(abc));
-        },
-          error => console.log(error));
-      this.addOrdersToOrderTable();
-  }
-  async  addOrdersToOrderTable() {
-    this.cartService.CreateOrderItems(this.oneItem)
-      .subscribe(async abc => {
-        await console.log(abc);
-      },
-        error => console.log(error));
   }
 
 
   placeOrder() {
-    this.loginService.getCustomerById(Number(sessionStorage.getItem("customerId"))).subscribe((val => {
-      this.cart.customer = JSON.parse(JSON.stringify(val));
-    }),
-      error => console.log(error));
-
-    //  this.cart.orderItems = JSON.parse(JSON.stringify(this.ordertableArray));
+  
+      this.cart.orderItems = JSON.parse(JSON.stringify(this.orderItemsArray));
     document.getElementById("FoodMenuContainer")?.classList.add("d-none");
     document.getElementById("ListAddressContainer")?.classList.remove("d-none");
     this.displayAddress();
-    //  this.router.navigate(['UserSettings'])
-    //  this.iterateTable();
-
 
   }
 
@@ -119,27 +94,65 @@ export class FoodMenuPageComponent implements OnInit {
 
 
   deliveryAddreessSelected(selectedAddressId: number) {
+
     this.customerAddressArray.forEach(element => {
       if (element.custAddressId == selectedAddressId) {
         this.cart.deliveryAddress = JSON.parse(JSON.stringify(element));
       }
     });
-    this.addDetailsToCart();
+    this.creatingCart();
+
 
   }
 
-  addDetailsToCart() {
 
-    console.log("********front ENDDDDDDDD***************");
+  // addDetailsToCart() {
+  //   this.orderItemsArray.forEach(element => {
+  //     element.cart = this.cart;
+  //     this.cartService.CreateOrderItems(element).subscribe( abc =>{
+  //       console.log(abc);
+  //     },   error => console.log(error));
+  // })
+  // console.log("********Output Output Output Output***************");
+
+  // console.log(this.cart);
+  // console.log("********Output Output Output Output***************");
+
+
+
+  // }
+  creatingCart(){
+    console.log("///////////front end //////////////");
     console.log(this.cart);
-    console.log("********front ENDDDDDDDD***************");
-    this.cartService.updateCart(this.cart)
-      .subscribe(abc => {
-        console.log("********Output Output Output Output***************");
-        console.log(abc);
-        console.log("********Output Output Output Output***************");
-      },
-        error => console.log(error));
 
+    this.cartService.createCart(this.cart)
+    .subscribe(abc => {
+      this.cart = abc;
+      console.log("********final output***************");
+
+      console.log(this.cart);
+
+    },
+      error => console.log(error));
+
+     // this.reduceOrderFromInventory();
+     // this.addDetailsToCart();
   }
+
+//   reduceOrderFromInventory(){
+//     var quantity =0;
+//     var itemId =0;
+//  this.orderItemsArray.forEach(element => {
+//   quantity = element.quantity;
+//   itemId = this.foodMenuArray.find({ quantitya= }) => name === 'cherries' );
+//    element.orderFoodId;
+//   this.restaurantOperationsService.updateDish(quantity,itemId)
+//   .subscribe(abc => {
+//     console.log(abc);
+//  console.log("updated food item in inventory " )
+//   },
+//    error => console.log(error));
+//  });
+
+//   }
 }

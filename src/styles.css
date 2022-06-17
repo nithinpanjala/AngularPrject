@@ -4,6 +4,8 @@
 .food-munch-logo {
     width: 80px;
     height: 70px;
+    background-image:  url("src\assets\New folder\ei_1655447869232-removebg-preview (1).png");
+    background-size: cover;
 }
 
 #navItem1 {
@@ -11,27 +13,44 @@
     font-family: "cursive";
 }
 
+.restaurant-section-bg-container {
+    background-image: url("src\assets\New folder\pexels-elevate-1267320.jpg");
+    background-size: cover;
+    height: 100vh;
+}
 .rest-section-bg-container {
     background-image: url("src\assets\New folder\pexels-dana-tentis-750073.jpg");
     background-size: cover;
     height: 100vh;
 }
 
+.nithin{
+ 
+    background-image:  url("src\assets\New folder\ei_1655447869232-removebg-preview (1).png");
+    background-size: cover;
+   height: 180px;
+  width: 240px;
+
+
+}
 .banner-section-bg-container {
-    background-image: url("src\assets\New folder\pexels-creative-vix-370984.jpg");
+    background-image: url("src\assets\New folder\pexels-elle-hughes-1660030.jpg");
     height: 100vh;
     background-size: cover;
 }
+.setting-at-postion{
+    margin-right: 150px;
+}
 
 .banner-heading {
-    color: white;
+    color:linear-gradient(#d0b200, #a58d00);
     font-family: "cursive";
     font-size: 45px;
     font-weight: 300;
 }
 
 .banner-caption {
-    color: #f5f7fa;
+    color:linear-gradient(#d0b200, #a58d00);
     font-family: "cursive";
     font-size: 24px;
     font-weight: 300;
@@ -106,11 +125,14 @@
     border-width: 1px;
     border-color: #e5eaf4;
     border-radius: 16px;
+    opacity: 0.7;
+
 }
 
 .wcu-card-image {
     width: 87px;
     height: 90px;
+
 }
 
 .wcu-card-title {
@@ -167,7 +189,8 @@
 
 .menu-item-card {
     border-radius: 16px;
-    background-color: #f9fbfe;
+    background-color:  #f9fbfe;
+    opacity: 0.7;
 }
 
 .healthy-food-section {

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RestaurantsPageComponent } from './restaurants-page.component';
+import { NavbarCustomerComponent } from './navbar-customer.component';
 
-describe('RestaurantsPageComponent', () => {
-  let component: RestaurantsPageComponent;
-  let fixture: ComponentFixture<RestaurantsPageComponent>;
+describe('NavbarCustomerComponent', () => {
+  let component: NavbarCustomerComponent;
+  let fixture: ComponentFixture<NavbarCustomerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RestaurantsPageComponent ]
+      declarations: [ NavbarCustomerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RestaurantsPageComponent);
+    fixture = TestBed.createComponent(NavbarCustomerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

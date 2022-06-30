@@ -7,6 +7,7 @@ import { RestaurantOperationsService } from '../services/restaurant-operations.s
 import { Restaurant } from '../Classes/restaurant';
 import {MatRadioModule} from '@angular/material/radio';
 
+
 @Component({
   selector: 'app-menu-operations',
   templateUrl: './menu-operations.component.html',
@@ -58,6 +59,7 @@ export class MenuOperationsComponent implements OnInit {
   
   
   deleteSelectedDish(itemId: number){
+
     this.restaurantOperationsService.deleteDish(itemId)
     .subscribe(abc => {
 
@@ -142,8 +144,8 @@ updateSelectedDish(itemId: number){
     document.getElementById("OpeningTiles")?.classList.add("d-none");
     
   }
-  onUpdateDishSubmit(quantity: any){
-    this.restaurantOperationsService.updateDish(Number(quantity) , this.foodId)
+  onUpdateDishSubmit(quantity: any , price: any){
+    this.restaurantOperationsService.updateDishQuantityAndPrice(Number(quantity) , Number(price), this.foodId)
     .subscribe(abc => {
       this.ListAllDishes();
     },

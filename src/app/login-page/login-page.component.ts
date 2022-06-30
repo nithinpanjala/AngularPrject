@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
   customerPassword !: "String";
   submitted = false;
   cart : Cart = new Cart;
-
+  errorMessage ="";
   array1: Customer[] = [];
   searchResultsEl = document.getElementById("exploreMenuSection");
   showResults = false;
@@ -107,7 +107,9 @@ export class LoginPageComponent implements OnInit {
 
 
       },
-        error => console.log(error));
+        error => {console.log(error)
+        this.errorMessage = error.error;
+  });
   }
  
   getAllCustomers() {
@@ -118,7 +120,8 @@ export class LoginPageComponent implements OnInit {
         console.log(this.array1);
         this.showResults = true;
       },
-        error => console.log(error));
+      
+        error => console.log(error.error));
 
   }
 

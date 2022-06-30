@@ -17,6 +17,17 @@
                     </div>
                     <div class="col-12 col-md-6 ">
                         <div class="wcu-card p-3 mb-3 shadow">
+                            <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/fruits-img.png"
+                                class="wcu-card-image" />
+                            <h1 class="wcu-card-title mt-3">Update Dishes</h1>
+                            <p class="wcu-card-description">
+                                Check the Menu and update the dishes in my Food Menu !!
+                            </p>
+                            <button class="custom-outline-button" (click)="ListAllDishes()">click me</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 ">
+                        <div class="wcu-card p-3 mb-3 shadow">
                             <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-serve.png"
                                 class="wcu-card-image" />
                             <h1 class="wcu-card-title mt-3">Add dishes</h1>
@@ -27,17 +38,7 @@
 
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 ">
-                        <div class="wcu-card p-3 mb-3 shadow">
-                            <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/fruits-img.png"
-                                class="wcu-card-image" />
-                            <h1 class="wcu-card-title mt-3">Food Menu</h1>
-                            <p class="wcu-card-description">
-                                Check the Menu and update the dishes in my Food Menu !!
-                            </p>
-                            <button class="custom-outline-button" (click)="ListAllDishes()">click me</button>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -125,6 +126,7 @@
                                     class="menu-card-title">{{item.foodName}}</span></h6>
                             <h6 class="menu-card-title">Price: {{item.foodPrice}}</h6>
                             <h6 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}}</h6>
+                            <h6 class="menu-card-title">Vegeterian Type: {{item.isVegeterian}}</h6>
                             <div class="d-flex flex-row justify-content-between">
                                 <button class="custom-outline-button2 "
                                     (click)="updateSelectedDish(item.foodId)">Update</button>
@@ -147,14 +149,16 @@
                 <div class="shadow  menu-item-card p-5 m-5">
                     <div class="form d- flex flex- column justify-content-center">
                         <div class="shadow menu-item-card p-3 mb-3">
-                            <h6 class="menu-card-title">Item Name: <span class="menu-card-title">{{foodName}}</span>
+                            <h6 class="menu-card-title">Item Name: <span class="menu-card-title text-capitalize fw-bold">{{foodName}}</span>
                             </h6>
                             <h6 class="menu-card-title">Price: {{foodPrice}}</h6>
+                            <input #price type="number" id="price" name="price" placeholder="Enter the new Price">
                             <h6 class="menu-card-title">Present Quantity Available: {{foodQuantityAvailable}}</h6>
-                            <input #quantity type="number" id="quantity" name="quantity">
+                            <input #quantity type="number" id="quantity" name="quantity" placeholder="Enter the new Quantity">
+      
                             <div class="d-flex flex-row justify-content-between">
-                                <button class="custom-outline-button2 "
-                                    (click)="onUpdateDishSubmit(quantity.value)">Update</button>
+                                <button class="custom-outline-button2 mt-1"
+                                    (click)="onUpdateDishSubmit(quantity.value, price.value)">Update</button>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container">
-        <a class="navbar-brand" routerLink="/restHome#wcuSection">
+        <a class="navbar-brand" routerLink="/home">
             <div class="food-munch-logo" ></div>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,12 +9,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto ">
-                <a class="nav-link active btn" id="navItem1"  (click)="RestOperations()">
-                    My Restaurant
+                <a class="nav-link active" id="navItem1" href="home#wcuSection">
+                    Why Choose Us?
                     <span class="sr-only">(current)</span>
                 </a>
-                <a class="nav-link btn" (click)="FoodMenuOperations()" id="navItem1">Check Menu</a>
-                <a class="nav-link" href="#followUsSection" id="navItem1">Follow Us</a>
+                <a class="nav-link" routerLink="/UserSettings" id="navItem1">Settings</a>
+                <a class="nav-link" href="home#deliveryPaymentSection" id="navItem1">Delivery & Payment</a>
+                <a class="nav-link" href="home#followUsSection" id="navItem1">Follow Us</a>
                 <a class="nav-link btn "  id="navItem1" (click)="logout()">Logout</a>
             </div>
         </div>

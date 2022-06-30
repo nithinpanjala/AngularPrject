@@ -15,7 +15,8 @@ export class RestaurantsPageComponent implements OnInit {
 
   showResults = false;
   array2: Restaurant[] = [];
-  
+  OpenRestro = "open restro";
+  pavanif = true;
   constructor(
     private router: Router,
     private restaurantOperationsService: RestaurantOperationsService,
@@ -35,7 +36,7 @@ export class RestaurantsPageComponent implements OnInit {
       console.log(this.array2);
       this.showResults = true;
     },
-      error => console.log(error));
+    error => console.log(error));
   }
 
 

@@ -25,6 +25,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainHomeComponent } from './main-home/main-home.component';
+import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
+import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteDishDialogComponent } from './delete-dish-dialog/delete-dish-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,9 @@ import { MainHomeComponent } from './main-home/main-home.component';
     RestOperationsComponent,
     MenuOperationsComponent,
     MainHomeComponent,
+    CheckoutpageComponent,
+    NavbarCustomerComponent,
+    DeleteDishDialogComponent,
     
   ],
   imports: [
@@ -52,7 +59,8 @@ import { MainHomeComponent } from './main-home/main-home.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [LoginPageComponent,CookieService],
   bootstrap: [AppComponent]

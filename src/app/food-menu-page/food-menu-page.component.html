@@ -1,59 +1,109 @@
+<app-navbar-customer></app-navbar-customer>
 
+<div class="container">
+        <div class="d-flex flex-row ">
 
-<app-header></app-header>
-
-<div  id="FoodMenuContainer">
-<div class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
-    <div class="container">
-        <div class="row" *ngIf="showResults">
-            <div class="col-12">
-                <h1 class="menu-section-heading container d-flex flex-column">Food Menu</h1>
+            <div class=" mt-5  d-flex flex-column flex-shrink-0 p-3 text-secondary bg-secondary "
+                style="width: 250px;margin-top: 50px; ">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                    <span class="fs-4">Sidebar</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a class="nav-link custom-outline-button" (click)="getonlyVeg()" aria-current="page">
+                            <svg class="bi me-2" width="20" height="16"></svg>
+                            Get Veg
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-outline-button" (click)="getonlyNonVeg()" aria-current="page">
+                            <svg class="bi me-2" width="20" height="16"></svg>
+                            Get Non Veg
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-outline-button" (click)="getall()" aria-current="page">
+                            <svg class="bi me-2" width="20" height="16"></svg>
+                            Get All Dishes
+                        </a>
+                    </li>
+                </ul>
+                <hr>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 " *ngFor="let item of foodMenuArray;">
-                <div>
-                    <div class="shadow menu-item-card p-3 mb-3">
-                        <h6 class="menu-card-title">Item Name: <span class="menu-card-title">{{item.foodName}}</span></h6>
-                        <h4 class="menu-card-title">Price: {{item.foodPrice}}</h4>
-                        <h4 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}} </h4>
-                        <h1 class="menu-card-title"> </h1>
-                        <label for="quantity" >Quantity :</label>
-                        <input #quantity type="number" id="quantity" name="quantity" min="1" max={{item.foodQuantityAvailable}}>
-                        <button class="custom-button mt-2" (click)="addtoCart(quantity.value ,item.foodId )">Add to cart</button>
+
+            <div id="FoodMenuContainer">
+                <div class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
+                    <div class="container mb-3">
+                        <div class="row" *ngIf="showResults">
+                            <div class="col-12">
+                                <h1 class="menu-section-heading container d-flex flex-column">Food Menu</h1>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-5 " *ngFor="let item of foodMenuArray;">
+                                <div>
+                                    <div class="shadow menu-item-card p-3 mb-3">
+                                        <h6 class="menu-card-title">Item Name: <span
+                                                class="menu-card-title">{{item.foodName}}</span></h6>
+                                        <h4 class="menu-card-title">Price: {{item.foodPrice}}</h4>
+                                        <h4 class="menu-card-title">Quantity Available: {{item.foodQuantityAvailable}}
+                                        </h4>
+                                        <h1 class="menu-card-title">Food Type : {{item.isVegeterian}} </h1>
+                                        <label for="quantity">Quantity :</label>
+                                        <input #quantity type="number" id="quantity" name="quantity" min="1"
+                                            max={{item.foodQuantityAvailable}} class="mr-5">
+                                        <button class="custom-outline-button mt-2"
+                                            (click)="addtoCart(quantity.value ,item.foodId,item.foodName )">Add to cart</button>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div>
+                                <button class="custom-outline-button  justify-content-center"
+                                    (click)="placeOrder()">Place Order</button>
+                            </div>
+                        </div>
 
 
                     </div>
                 </div>
-               
             </div>
-            <div>
-                <button class="custom-outline-button  justify-content-center" (click)="placeOrder()">Place Order</button>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
-<div class="container mt-5 d-none" id = "ListAddressContainer">
-    <div  class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
-        <div class="container" >
-            <div class="row" *ngIf="showResults">
-                <div class="col-12">
-                    <h1 class="menu-section-heading" >Customer List</h1>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 " *ngFor="let address of customerAddressArray;" >
-                    <div >
-                    <div  class="shadow menu-item-card p-3 mb-3" >
-                        <p class="menu-card-title">House No : {{address.custHouseNumber}} ,{{address.custAddressLane1}},{{address.custAddressLane2}}.
-                            Near{{address.custLandmark}}, {{address.custDistrict}},{{address.custState}}, {{address.custPincode}}
-                        </p>    
-                        <button class="custom-button"  (click)="deliveryAddreessSelected(address.custAddressId)" >Deliver here</button>
-      
+            <div class="container mt-5 d-none" id="ListAddressContainer">
+                <div class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
+                    <div class="container">
+                        <div class="row" *ngIf="showResults">
+                            <div class="col-12">
+                                <h1 class="menu-section-heading">Customer Address List</h1>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 " *ngFor="let address of customerAddressArray;">
+                                <div>
+                                    <div class="shadow menu-item-card p-3 mb-3">
+                                        <p class="menu-card-title">House No : {{address.custHouseNumber}}
+                                            ,{{address.custAddressLane1}},{{address.custAddressLane2}}.
+                                            Near{{address.custLandmark}},
+                                            {{address.custDistrict}},{{address.custState}}, {{address.custPincode}}
+                                        </p>
+                                        <button class="custom-button"
+                                            (click)="deliveryAddreessSelected(address.custAddressId)">Deliver
+                                            here</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
+            </div>
+
+
+        </div>
 </div>
+
+
 <app-footer></app-footer>

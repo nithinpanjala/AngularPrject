@@ -14,6 +14,7 @@ import { RestaurantOperationsService } from './services/restaurant-operations.se
 import { RestaurantsPageComponent } from './restaurants-page/restaurants-page.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
 
 const routes: Routes = [
   {path : "", component: MainHomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path : 'restOperations', component: RestOperationsComponent},
   {path : 'menuOperations', component: MenuOperationsComponent},
   {path : 'MainHome', component: MainHomeComponent},
+  {path : 'checkout',component: CheckoutpageComponent},
   {path : 'FoodMenuPage/:restaurantId',component: FoodMenuPageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   

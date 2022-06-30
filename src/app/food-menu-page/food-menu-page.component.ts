@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ROUTER_INITIALIZER } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Cart } from '../Classes/cart';
 import { FoodMenu } from '../Classes/food-menu';
@@ -62,17 +62,41 @@ cart: Cart = new Cart;
       },
         error => console.log(error));
   }
+  getonlyVeg(){
+    this.restaurantOperationsService.getonlyVegItems(Number(sessionStorage.getItem("restaurantId")))
+    .subscribe(abc => {
+
+      this.foodMenuArray = abc;
+      this.showResults = true;
+    },
+      error => console.log(error));
+  }
+  
+  getonlyNonVeg(){
+    this.restaurantOperationsService.getonlyNonVegItems(Number(sessionStorage.getItem("restaurantId")))
+    .subscribe(abc => {
+
+      this.foodMenuArray = abc;
+      this.showResults = true;
+    },
+      error => console.log(error));
+  
+  }
+  getall(){
+    this.OpenRestaurant(Number(sessionStorage.getItem("restaurantId")));
+  }
+  
 
 
 
-  addtoCart(id: String, foodId: number) {
+  addtoCart(id: String, foodId: number ,foodName : String) {
     var oneItem = new orderItems();
  oneItem.orderCustId = Number(sessionStorage.getItem("customerId")),
    oneItem.orderRestId = Number(sessionStorage.getItem("restaurantId")),
    oneItem.orderFoodId = foodId,
      oneItem.quantity = Number(id),
      this.orderItemsArray.push(oneItem);
-
+    alert(foodName +" added to the cart");
   }
 
 
@@ -100,6 +124,7 @@ cart: Cart = new Cart;
         this.cart.deliveryAddress = JSON.parse(JSON.stringify(element));
       }
     });
+
     this.creatingCart();
 
 
@@ -128,10 +153,11 @@ cart: Cart = new Cart;
     this.cartService.createCart(this.cart)
     .subscribe(abc => {
       this.cart = abc;
+      sessionStorage.setItem("cartNo" , String(this.cart.cartNo))
       console.log("********final output***************");
 
       console.log(this.cart);
-
+      this.router.navigateByUrl('checkout');
     },
       error => console.log(error));
 
@@ -155,4 +181,7 @@ cart: Cart = new Cart;
 //  });
 
 //   }
+
+
+
 }

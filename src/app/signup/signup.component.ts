@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
   
 
   constructor(
+    private router : Router,
     private fb: FormBuilder, 
     private customerSignUpServiceService: CustomerSignUpServiceService
    
@@ -27,12 +28,12 @@ export class SignupComponent implements OnInit {
   ) { }
 
   customerForm = this.fb.group({
-    customerName: ['', [Validators.required]],
-    customerPassword: ['',[Validators.required]],
+    customerName: ['', [Validators.required], Validators.minLength(8)],
+    customerPassword: ['',[Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
     customerFirstName: ['',[Validators.required]],
     customerLastName: ['',[Validators.required]],
-    customerMobile: ['',[Validators.required]],
-    customerEmail: ['',[Validators.required]]
+    customerMobile: ['',[Validators.required , Validators.minLength(10) , Validators.maxLength(10)]],
+    customerEmail: ['',[Validators.required , Validators.email]]
   });
 
 
@@ -57,7 +58,7 @@ export class SignupComponent implements OnInit {
     this.customerSignUpServiceService.addCustomer(this.customer)
       .subscribe(data => {
         console.log(data);
-
+        this.router.navigateByUrl('login');
       },
        error => console.log(error));
     // this.book = new Book();
@@ -67,6 +68,9 @@ export class SignupComponent implements OnInit {
     return this.customerForm.controls
   }
 
+  get customerPassword(){
+    return this.customerForm.get('customerPassword')
+  }
   
 
 

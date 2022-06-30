@@ -140,8 +140,8 @@ export class UserSettingsComponent implements OnInit {
     document.getElementById("UpdateEmailContainer")?.classList.add("d-none");
   }
   onupdateUserPasswordSubmit(){
-    this.customerName = this.UpdatePasswordFormControls['customerName'].value;
-    this.customerPassword = this.UpdatePasswordFormControls['customerPassword'].value;
+    this.customerName = this.UpdatePasswordFormControls['UpdatePasswordFormcustomerName'].value;
+    this.customerPassword = this.UpdatePasswordFormControls['UpdatePasswordFormcustomerPassword'].value;
     this.newpassword = this.UpdatePasswordFormControls['newpassword'].value;
     this.updateUserNewPassword();
   }
@@ -178,8 +178,8 @@ export class UserSettingsComponent implements OnInit {
     document.getElementById("UpdateEmailContainer")?.classList.remove("d-none");
   }
   onupdateUserEmailSubmit(){
-    this.customerName = this.UpdateEmailFormControls['customerName'].value;
-    this.customerPassword = this.UpdateEmailFormControls['customerPassword'].value;
+    this.customerName = this.UpdateEmailFormControls['UpdateEmailFormcustomerName'].value;
+    this.customerPassword = this.UpdateEmailFormControls['UpdateEmailFormcustomerPassword'].value;
     this.newEmail = this.UpdateEmailFormControls['newEmail'].value;
     this.updateUserNewEmail();
   }
@@ -198,8 +198,8 @@ export class UserSettingsComponent implements OnInit {
 
 
   updateUsermobileForm = this.fb.group({
-    customerName: ['', [Validators.required]],
-    customerPassword: ['',[Validators.required]],
+  customerName: ['', [Validators.required]],
+  customerPassword: ['',[Validators.required]],
     newMobileNumber: ['',[Validators.required]],
   });
 
@@ -219,8 +219,8 @@ export class UserSettingsComponent implements OnInit {
   }
 
   onupdateUsermobileSubmit(){
-    this.customerName = this.updateUsermobileFormControls['customerName'].value;
-    this.customerPassword = this.updateUsermobileFormControls['customerPassword'].value;
+    this.customerName = this.updateUsermobileFormControls['UsermobileFormcustomerName'].value;
+    this.customerPassword = this.updateUsermobileFormControls['UsermobileFormcustomerPassword'].value;
     this.newMobileNumber = this.updateUsermobileFormControls['newMobileNumber'].value;
     this.updateUsermobileaaa();
   }

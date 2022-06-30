@@ -29,6 +29,24 @@ export class RestaurantOperationsService {
 
 
   }
+
+  getonlyVegItems(restaurantId : number): Observable<FoodMenu[]>{
+
+    const params = new HttpParams().set('restaurantId',restaurantId);
+    return this.httpClient.get<FoodMenu[]>(`${this.foodListURl}getVeg`,{params});
+
+
+  }
+  getonlyNonVegItems(restaurantId : number): Observable<FoodMenu[]>{
+
+    const params = new HttpParams().set('restaurantId',restaurantId);
+    return this.httpClient.get<FoodMenu[]>(`${this.foodListURl}getNonVeg`,{params});
+
+
+  }
+
+
+
   selectedDish(dishId : number): Observable<FoodMenu>{
 
     const params = new HttpParams().set('Dishid',dishId);
@@ -46,6 +64,10 @@ export class RestaurantOperationsService {
   updateDish(quantity: number , dishId:number): Observable<FoodMenu>{
     const params = new HttpParams().set('quantity',quantity).set('DishId',dishId);
     return this.httpClient.put<FoodMenu>(`${this.foodListURl}`+'updateDishQuantity/'+quantity+'/'+dishId , FoodMenu);
+  }
+  updateDishQuantityAndPrice(quantity: number ,price:number, dishId:number): Observable<FoodMenu>{
+    const params = new HttpParams().set('quantity',quantity).set('DishId',dishId).set('price',price);
+    return this.httpClient.put<FoodMenu>(`${this.foodListURl}`+'updateDishQuantityAndPrice/'+quantity+'/'+price +'/'+dishId , FoodMenu);
   }
 
 
@@ -68,6 +90,12 @@ export class RestaurantOperationsService {
   updateRestaurant(restaurant : Restaurant): Observable<Object>{
   
     return this.httpClient.put<Restaurant>(`${this.baseURL}`+'updateRestaurant/',restaurant);
+  }
+  
+  deleteRest(restaurantId : number):Observable<String>{
+    return this.httpClient.delete<String>(`${this.baseURL}deleteRestaurant/`+restaurantId);
+
+
   }
 
 

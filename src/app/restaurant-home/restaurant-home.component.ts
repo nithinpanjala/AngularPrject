@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RestaurantHomeComponent implements OnInit {
   showResults!: true;
+  adminName !: string;
   customerAddressArray!: [];
   constructor(
     public cookies : CookieService,
@@ -17,7 +18,7 @@ export class RestaurantHomeComponent implements OnInit {
   ngOnInit(): void {
 
     const jwtToken =this.cookies.get('rest_admin_jwt_token')
-    
+    this.adminName = String(sessionStorage.getItem("adminName"));
     if(!jwtToken){
       
       this.router.navigate(['login'])

@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-navbar-customer',
+  templateUrl: './navbar-customer.component.html',
+  styleUrls: ['./navbar-customer.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class NavbarCustomerComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -21,15 +21,5 @@ export class HeaderComponent implements OnInit {
     this.cookies.deleteAll;
     this.router.navigateByUrl('');
     
-  }
-
-  RestOperations(){
-    this.router.navigateByUrl('restOperations');
-    
-  }
-  FoodMenuOperations(){
-    
-    this.router.navigateByUrl('menuOperations');
-
   }
 }

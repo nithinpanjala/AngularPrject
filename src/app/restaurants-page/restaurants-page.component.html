@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-navbar-customer></app-navbar-customer>
 
 <div  class="explore-menu-section pt-5 pb-5" id="DynamicUpdateSection">
     <div class="container" >
@@ -23,9 +23,6 @@
                         {{restaurant.restaurantAddress.restaurantPincode}}
                     </p> 
                     <button class="custom-button"  [routerLink]="['/FoodMenuPage', restaurant.restaurantId]" >Open Restro</button>
-
-                       
-
                 </div>
             </div>
             </div>
